@@ -1,0 +1,7 @@
+# Example comment
+window-title=Snake
+
+[main-menu]
+game-title=Snake
+start-game=Start Game
+exit-game=Exit Game
