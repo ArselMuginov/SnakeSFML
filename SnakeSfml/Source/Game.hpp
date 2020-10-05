@@ -1,8 +1,8 @@
 #pragma once
-#include "LocaleLoader.hpp"
-#include "Button.hpp"
-#include "TileType.hpp"
-#include "TileMap.hpp"
+#include "Localization/LocaleLoader.hpp"
+#include "UI/Button.hpp"
+#include "TileMap/TileType.hpp"
+#include "TileMap/TileMap.hpp"
 #include "GameScene.hpp"
 #include "Snake.hpp"
 #include "Apple.hpp"

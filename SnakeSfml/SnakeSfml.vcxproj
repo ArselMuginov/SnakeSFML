@@ -149,23 +149,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Apple.cpp" />
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="LocaleLoader.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Snake.cpp" />
-    <ClCompile Include="TileMap.cpp" />
+    <ClCompile Include="Source\Apple.cpp" />
+    <ClCompile Include="Source\UI\Button.cpp" />
+    <ClCompile Include="Source\Game.cpp" />
+    <ClCompile Include="Source\Localization\LocaleLoader.cpp" />
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Snake.cpp" />
+    <ClCompile Include="Source\TileMap\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Apple.hpp" />
-    <ClInclude Include="Button.hpp" />
-    <ClInclude Include="Game.hpp" />
-    <ClInclude Include="GameScene.hpp" />
-    <ClInclude Include="LocaleLoader.hpp" />
-    <ClInclude Include="Snake.hpp" />
-    <ClInclude Include="TileMap.hpp" />
-    <ClInclude Include="TileType.hpp" />
+    <ClInclude Include="Source\Apple.hpp" />
+    <ClInclude Include="Source\UI\Button.hpp" />
+    <ClInclude Include="Source\Game.hpp" />
+    <ClInclude Include="Source\GameScene.hpp" />
+    <ClInclude Include="Source\Localization\LocaleLoader.hpp" />
+    <ClInclude Include="Source\Snake.hpp" />
+    <ClInclude Include="Source\TileMap\TileMap.hpp" />
+    <ClInclude Include="Source\TileMap\TileType.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
