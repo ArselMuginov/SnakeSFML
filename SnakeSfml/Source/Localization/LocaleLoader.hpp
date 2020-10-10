@@ -1,9 +1,14 @@
 #pragma once
-#include <filesystem>
-#include <map>
-#include <fstream>
 #include <codecvt>
+#include <filesystem>
+#include <fstream>
+#include <map>
 #include <SFML/System/String.hpp>
+
+namespace
+{
+	namespace stdfs = std::filesystem;
+}
 
 class LocaleLoader
 {
@@ -15,8 +20,8 @@ public:
 	sf::String getString(const sf::String& section, const sf::String& key);
 
 private:
-	const std::filesystem::path m_localePath;
-	const std::filesystem::path m_localeFileName;
-	std::map<sf::String, std::filesystem::path> m_locales;
+	const stdfs::path m_localePath;
+	const stdfs::path m_localeFileName;
+	std::map<sf::String, stdfs::path> m_locales;
 	std::map<std::pair<sf::String, sf::String>, sf::String> m_currentLocaleMap;
 };

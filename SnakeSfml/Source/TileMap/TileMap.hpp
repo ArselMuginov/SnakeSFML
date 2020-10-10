@@ -7,7 +7,7 @@ class TileMap : public sf::Drawable, public sf::Transformable
 public:
 	TileMap(const sf::Texture& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height);
 	~TileMap();
-	
+
 	void tile(const TileType* tiles);
 
 private:

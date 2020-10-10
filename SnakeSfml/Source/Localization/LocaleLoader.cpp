@@ -1,8 +1,12 @@
 #include "LocaleLoader.hpp"
 
-LocaleLoader::LocaleLoader() : m_localePath(std::filesystem::path("Resources") / "Locale"), m_localeFileName(std::filesystem::path("main.locale")), m_locales(), m_currentLocaleMap()
+LocaleLoader::LocaleLoader() :
+	m_localePath(stdfs::path("Resources") / "Locale"),
+	m_localeFileName(stdfs::path("main.locale")),
+	m_locales(),
+	m_currentLocaleMap()
 {
-	for (const auto& entry : std::filesystem::directory_iterator(m_localePath))
+	for (const auto& entry : stdfs::directory_iterator(m_localePath))
 	{
 		m_locales[sf::String(entry.path().filename().wstring())] = entry.path();
 	}

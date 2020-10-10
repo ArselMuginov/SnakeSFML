@@ -1,12 +1,11 @@
 #pragma once
-#include "Localization/LocaleLoader.hpp"
-#include "UI/Button.hpp"
-#include "TileMap/TileType.hpp"
-#include "TileMap/TileMap.hpp"
+#include "Apple.hpp"
 #include "GameScene.hpp"
 #include "Snake.hpp"
-#include "Apple.hpp"
-#include <SFML/Graphics.hpp>
+#include "Localization/LocaleLoader.hpp"
+#include "TileMap/TileMap.hpp"
+#include "TileMap/TileType.hpp"
+#include "UI/Button.hpp"
 
 namespace
 {
@@ -21,7 +20,7 @@ namespace
 	const sf::String tilesetFilename = L"Resources/Sprites/Tileset.png";
 	const sf::Vector2u tileSize(32, 32);
 
-	const sf::String defaultLocaleKey = L"en";
+	const sf::String defaultLocaleKey = L"ru";
 	const sf::String fontFilename = L"Resources/Fonts/SourceSansPro/SourceSansPro-Regular.ttf";
 
 	const GameScene firstScene = GameScene::MainMenu;
@@ -38,6 +37,7 @@ public:
 	~Game();
 
 	void run();
+
 private:
 	void processEvents();
 	void update();
