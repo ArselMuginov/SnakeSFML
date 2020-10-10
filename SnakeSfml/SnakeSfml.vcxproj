@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\UI\Padding.cpp" />
     <ClCompile Include="Source\Apple.cpp" />
     <ClCompile Include="Source\UI\Button.cpp" />
     <ClCompile Include="Source\Game.cpp" />
@@ -156,8 +157,12 @@
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Snake.cpp" />
     <ClCompile Include="Source\TileMap\TileMap.cpp" />
+    <ClCompile Include="Source\UI\Text.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\UI\Anchor.hpp" />
+    <ClInclude Include="Source\UI\LayoutAngle.hpp" />
+    <ClInclude Include="Source\UI\Padding.hpp" />
     <ClInclude Include="Source\Apple.hpp" />
     <ClInclude Include="Source\UI\Button.hpp" />
     <ClInclude Include="Source\Game.hpp" />
@@ -166,6 +171,8 @@
     <ClInclude Include="Source\Snake.hpp" />
     <ClInclude Include="Source\TileMap\TileMap.hpp" />
     <ClInclude Include="Source\TileMap\TileType.hpp" />
+    <ClInclude Include="Source\UI\Text.hpp" />
+    <ClInclude Include="Source\UI\UIElement.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
