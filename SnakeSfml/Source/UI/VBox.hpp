@@ -5,7 +5,10 @@ namespace ui
 {
 	class VBox : public Layout
 	{
-	public:		
+	public:
 		virtual void update();
+
+	protected:
+		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	};
 }
