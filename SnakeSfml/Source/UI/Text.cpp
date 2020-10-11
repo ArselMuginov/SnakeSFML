@@ -11,6 +11,11 @@ namespace ui
 	{
 	}
 
+	sf::FloatRect Text::getLocalBounds() const
+	{
+		return text.getLocalBounds();
+	}
+
 	void Text::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		states.transform *= getTransform();

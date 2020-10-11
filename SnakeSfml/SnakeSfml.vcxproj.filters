@@ -42,6 +42,18 @@
     <ClCompile Include="Source\UI\Padding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\UI\Layout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UI\UIElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UI\VBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UI\HBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\TileMap\TileMap.hpp">
@@ -77,10 +89,13 @@
     <ClInclude Include="Source\UI\Padding.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UI\LayoutAngle.hpp">
+    <ClInclude Include="Source\UI\Layout.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UI\Anchor.hpp">
+    <ClInclude Include="Source\UI\VBox.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\UI\HBox.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

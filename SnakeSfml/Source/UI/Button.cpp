@@ -11,7 +11,7 @@ namespace ui
 	void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		states.transform *= getTransform();
-		states.texture = NULL;
+		states.texture = nullptr;
 
 		target.draw(m_text, states);
 		target.draw(m_border, states);
@@ -20,11 +20,6 @@ namespace ui
 	sf::FloatRect Button::getLocalBounds() const
 	{
 		return m_border.getGlobalBounds();
-	}
-
-	sf::FloatRect Button::getGlobalBounds() const
-	{
-		return getTransform().transformRect(getLocalBounds());
 	}
 
 	void Button::setString(const sf::String& string)

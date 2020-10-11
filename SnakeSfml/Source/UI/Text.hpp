@@ -11,6 +11,8 @@ namespace ui
 		Text();
 		Text(const sf::String& string, const sf::Font& font, unsigned int characterSize = 30);
 
+		virtual sf::FloatRect getLocalBounds() const;
+
 		sf::Text text;
 
 	private:

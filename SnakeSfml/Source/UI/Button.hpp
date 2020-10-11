@@ -11,8 +11,7 @@ namespace ui
 	public:
 		Button();
 
-		sf::FloatRect getLocalBounds() const;
-		sf::FloatRect getGlobalBounds() const;
+		virtual sf::FloatRect getLocalBounds() const;
 		void setString(const sf::String& string);
 		void setFont(const sf::Font& font);
 		void setCharacterSize(unsigned int characterSize);

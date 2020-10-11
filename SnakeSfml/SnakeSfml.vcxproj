@@ -153,6 +153,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\UI\Layout.cpp" />
+    <ClCompile Include="Source\UI\VBox.cpp" />
     <ClCompile Include="Source\UI\Padding.cpp" />
     <ClCompile Include="Source\Apple.cpp" />
     <ClCompile Include="Source\UI\Button.cpp" />
@@ -162,10 +164,12 @@
     <ClCompile Include="Source\Snake.cpp" />
     <ClCompile Include="Source\TileMap\TileMap.cpp" />
     <ClCompile Include="Source\UI\Text.cpp" />
+    <ClCompile Include="Source\UI\UIElement.cpp" />
+    <ClCompile Include="Source\UI\HBox.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\UI\Anchor.hpp" />
-    <ClInclude Include="Source\UI\LayoutAngle.hpp" />
+    <ClInclude Include="Source\UI\Layout.hpp" />
+    <ClInclude Include="Source\UI\VBox.hpp" />
     <ClInclude Include="Source\UI\Padding.hpp" />
     <ClInclude Include="Source\Apple.hpp" />
     <ClInclude Include="Source\UI\Button.hpp" />
@@ -177,6 +181,7 @@
     <ClInclude Include="Source\TileMap\TileType.hpp" />
     <ClInclude Include="Source\UI\Text.hpp" />
     <ClInclude Include="Source\UI\UIElement.hpp" />
+    <ClInclude Include="Source\UI\HBox.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
