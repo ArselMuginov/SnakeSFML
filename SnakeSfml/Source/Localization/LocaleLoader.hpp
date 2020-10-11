@@ -14,7 +14,6 @@ class LocaleLoader
 {
 public:
 	LocaleLoader();
-	~LocaleLoader();
 
 	void loadLocale(const sf::String& localeKey);
 	sf::String getString(const sf::String& section, const sf::String& key);

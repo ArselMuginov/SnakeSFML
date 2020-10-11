@@ -11,14 +11,10 @@ namespace ui
 	{
 	}
 
-	Text::~Text()
-	{
-	}
-
 	void Text::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		states.transform *= getTransform();
-		states.texture = NULL;
+		states.texture = nullptr;
 
 		target.draw(text, states);
 	}

@@ -105,10 +105,6 @@ Game::Game() :
 	m_sprite.setTexture(m_texture);
 }
 
-Game::~Game()
-{
-}
-
 void Game::run()
 {
 	while (m_window.isOpen())

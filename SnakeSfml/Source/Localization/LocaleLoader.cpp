@@ -12,10 +12,6 @@ LocaleLoader::LocaleLoader() :
 	}
 }
 
-LocaleLoader::~LocaleLoader()
-{
-}
-
 void LocaleLoader::loadLocale(const sf::String& localeKey)
 {
 	std::wifstream localeFile(m_locales[localeKey] / m_localeFileName);

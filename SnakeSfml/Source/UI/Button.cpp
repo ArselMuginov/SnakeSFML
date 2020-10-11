@@ -8,10 +8,6 @@ namespace ui
 	{
 	}
 
-	Button::~Button()
-	{
-	}
-
 	void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		states.transform *= getTransform();

@@ -34,7 +34,6 @@ class Game
 {
 public:
 	Game();
-	~Game();
 
 	void run();
 
@@ -51,8 +50,8 @@ private:
 	sf::Font m_font;
 	sf::RectangleShape m_mainMenuRect;
 	sf::Text m_title;
-	Button m_startGameButton;
-	Button m_exitButton;
+	ui::Button m_startGameButton;
+	ui::Button m_exitButton;
 	sf::Texture m_tileset;
 	TileMap m_tileMap;
 	TileType m_boardState[boardWidth * boardHeight];

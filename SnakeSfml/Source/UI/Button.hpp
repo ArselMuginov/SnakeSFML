@@ -10,7 +10,6 @@ namespace ui
 	{
 	public:
 		Button();
-		~Button();
 
 		sf::FloatRect getLocalBounds() const;
 		sf::FloatRect getGlobalBounds() const;

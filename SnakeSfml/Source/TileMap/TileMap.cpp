@@ -9,10 +9,6 @@ TileMap::TileMap(const sf::Texture& tileset, sf::Vector2u tileSize, unsigned int
 {
 }
 
-TileMap::~TileMap()
-{
-}
-
 void TileMap::tile(const TileType* tiles)
 {
 	// Code from https://www.sfml-dev.org/tutorials/2.5/graphics-vertex-array.php#example-tile-map

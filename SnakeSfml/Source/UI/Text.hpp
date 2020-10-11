@@ -10,7 +10,6 @@ namespace ui
 	public:
 		Text();
 		Text(const sf::String& string, const sf::Font& font, unsigned int characterSize = 30);
-		~Text();
 
 		sf::Text text;
 
