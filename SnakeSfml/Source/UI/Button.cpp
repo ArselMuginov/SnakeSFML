@@ -4,63 +4,73 @@
 
 namespace ui
 {
-	Button::Button() : m_border(), m_text(), m_borderOutlineThickness(1.f)
+	Button::Button() :
+		m_background(),
+		m_text(),
+		m_padding(),
+		m_fixedSize(false)
 	{
 	}
 
-	void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
+	Button::Button(const sf::String& string, const sf::Font& font, unsigned int characterSize) :
+		m_background(),
+		m_text(string, font, characterSize),
+		m_padding(),
+		m_fixedSize(false)
 	{
-		states.transform *= getTransform();
-		states.texture = nullptr;
+		update();
+	}
 
-		target.draw(m_text, states);
-		target.draw(m_border, states);
+	Button::Button(const sf::Vector2f& size) :
+		m_background(size),
+		m_text(),
+		m_padding(),
+		m_fixedSize(true)
+	{
+		update();
 	}
 
 	sf::FloatRect Button::getLocalBounds() const
 	{
-		return m_border.getGlobalBounds();
+		return m_background.getGlobalBounds();
 	}
 
 	void Button::setString(const sf::String& string)
 	{
 		m_text.setString(string);
+		update();
 	}
 
 	void Button::setFont(const sf::Font& font)
 	{
 		m_text.setFont(font);
+		update();
 	}
 
 	void Button::setCharacterSize(unsigned int characterSize)
 	{
 		m_text.setCharacterSize(characterSize);
+		update();
 	}
 
-	void Button::setBorderOutlineThickness(float outlineThickness)
+	void Button::setBorderThickness(float outlineThickness)
 	{
-		m_borderOutlineThickness = outlineThickness;
-		m_border.setOutlineThickness(outlineThickness);
+		m_background.setOutlineThickness(outlineThickness);
+		update();
 	}
 
-	void Button::setBorderSize(float rectWidth, float rectHeight)
+	void Button::setSize(float rectWidth, float rectHeight)
 	{
-		auto textBounds = m_text.getLocalBounds();
-		int textX = m_borderOutlineThickness - textBounds.left + (rectWidth - textBounds.width) / 2;
-		int textY = m_borderOutlineThickness - textBounds.top + (rectHeight - textBounds.height) / 2;
-		m_text.setPosition(textX, textY);
-
-		m_border.setSize(sf::Vector2f(rectWidth, rectHeight));
-		m_border.setPosition(m_borderOutlineThickness, m_borderOutlineThickness);
+		m_fixedSize = true;
+		m_background.setSize(sf::Vector2f(rectWidth, rectHeight));
+		update();
 	}
 
-	void Button::setPadding(float paddingX, float paddingY)
+	void Button::setPadding(const Padding& padding)
 	{
-		auto textBounds = m_text.getLocalBounds();
-		m_text.setPosition(m_borderOutlineThickness + paddingX - textBounds.left / 2, m_borderOutlineThickness + paddingY - textBounds.top / 2);
-
-		m_border.setPosition(m_borderOutlineThickness, m_borderOutlineThickness);
-		m_border.setSize(sf::Vector2f(textBounds.left + textBounds.width + paddingX * 2, textBounds.top + textBounds.height + paddingY * 2));
+		m_fixedSize = false;
+		m_padding = padding;
+		update();
 	}
 
 	void Button::setTextFillColor(sf::Color color)
@@ -68,13 +78,66 @@ namespace ui
 		m_text.setFillColor(color);
 	}
 
-	void Button::setBorderFillColor(sf::Color color)
+	void Button::setBackgroundColor(sf::Color color)
 	{
-		m_border.setFillColor(color);
+		m_background.setFillColor(color);
 	}
 
-	void Button::setBorderOutlineColor(sf::Color color)
+	void Button::setBorderColor(sf::Color color)
 	{
-		m_border.setOutlineColor(color);
+		m_background.setOutlineColor(color);
+	}
+
+	void Button::setStyle(Style style)
+	{
+		switch (style)
+		{
+			case Style::WhiteOutline:
+				m_background.setFillColor(sf::Color::Transparent);
+				m_background.setOutlineColor(sf::Color::White);
+				m_background.setOutlineThickness(1);
+				m_text.setFillColor(sf::Color::White);
+				break;
+
+			case Style::BlackOutline:
+				m_background.setFillColor(sf::Color::Transparent);
+				m_background.setOutlineColor(sf::Color::Black);
+				m_background.setOutlineThickness(1);
+				m_text.setFillColor(sf::Color::Black);
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
+	{
+		states.transform *= getTransform();
+		states.texture = nullptr;
+
+		target.draw(m_background, states);
+		target.draw(m_text, states);
+	}
+
+	void Button::update()
+	{
+		const auto textBounds = m_text.getLocalBounds();
+		if (!m_fixedSize)
+		{
+			m_background.setSize({
+				textBounds.left + textBounds.width + m_padding.left + m_padding.right,
+				textBounds.top + textBounds.height + m_padding.top + m_padding.down
+			});
+		}
+
+		const auto size = m_background.getSize();
+		const float borderThickness = m_background.getOutlineThickness();
+		// TODO: center for fixed size
+		const int textX = borderThickness + m_padding.left - textBounds.left / 2.f;
+		const int textY = borderThickness + m_padding.top - textBounds.top / 2.f;
+
+		m_background.setPosition(borderThickness, borderThickness);
+		m_text.setPosition(textX, textY);
 	}
 }

@@ -11,6 +11,15 @@ namespace ui
 	{
 	}
 
+	Layout::Layout(const sf::Vector2f& size) :
+		padding(),
+		margin(0),
+		stretchContent(false),
+		background(size),
+		m_children()
+	{
+	}
+
 	void Layout::addElement(std::unique_ptr<UIElement> element)
 	{
 		m_children.push_back(std::move(element));
@@ -24,6 +33,32 @@ namespace ui
 	sf::FloatRect Layout::getLocalBounds() const
 	{
 		return background.getLocalBounds();
+	}
+
+	void Layout::setStyle(Style style)
+	{
+		switch (style)
+		{
+			case ui::Layout::Style::Invisible:
+				background.setFillColor(sf::Color::Transparent);
+				background.setOutlineThickness(0);
+				break;
+			
+			case ui::Layout::Style::WhiteBorder:
+				background.setFillColor(sf::Color::Transparent);
+				background.setOutlineColor(sf::Color::White);
+				background.setOutlineThickness(1);
+				break;
+
+			case ui::Layout::Style::BlackBorder:
+				background.setFillColor(sf::Color::Transparent);
+				background.setOutlineColor(sf::Color::Black);
+				background.setOutlineThickness(1);
+				break;
+
+			default:
+				break;
+		}
 	}
 
 	const UIElement& Layout::operator[](size_t index) const

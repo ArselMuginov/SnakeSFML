@@ -6,6 +6,7 @@ namespace ui
 	class HBox : public Layout
 	{
 	public:
+		using Layout::Layout;
 		virtual void update();
 
 	protected:

@@ -70,21 +70,21 @@ Game::Game() :
 	m_startGameButton.setString(m_localeLoader.getString(L"main-menu", L"start-game"));
 	m_startGameButton.setFont(m_font);
 	m_startGameButton.setCharacterSize(buttonTextCharacterSize);
-	m_startGameButton.setBorderOutlineThickness(1.f);
-	m_startGameButton.setBorderSize(125.f, 30.f);
-	m_startGameButton.setBorderFillColor(sf::Color::Transparent);
+	m_startGameButton.setBorderThickness(1.f);
+	m_startGameButton.setSize(125.f, 30.f);
+	m_startGameButton.setBackgroundColor(sf::Color::Transparent);
 	m_startGameButton.setTextFillColor(sf::Color::Black);
-	m_startGameButton.setBorderOutlineColor(sf::Color::Black);
+	m_startGameButton.setBorderColor(sf::Color::Black);
 	positionWithBounds(m_startGameButton, windowWidth / 2, windowHeight * 0.45f);
 
 	m_exitButton.setString(m_localeLoader.getString(L"main-menu", L"exit-game"));
 	m_exitButton.setFont(m_font);
 	m_exitButton.setCharacterSize(buttonTextCharacterSize);
-	m_exitButton.setBorderOutlineThickness(1.f);
-	m_exitButton.setBorderSize(125.f, 30.f);
-	m_exitButton.setBorderFillColor(sf::Color::Transparent);
+	m_exitButton.setBorderThickness(1.f);
+	m_exitButton.setSize(125.f, 30.f);
+	m_exitButton.setBackgroundColor(sf::Color::Transparent);
 	m_exitButton.setTextFillColor(sf::Color::Black);
-	m_exitButton.setBorderOutlineColor(sf::Color::Black);
+	m_exitButton.setBorderColor(sf::Color::Black);
 	positionWithBounds(m_exitButton, windowWidth / 2, windowHeight * 0.55f);
 
 	if (!m_tileset.loadFromFile(tilesetFilename))
