@@ -2,7 +2,7 @@
 #include "Apple.hpp"
 #include "GameScene.hpp"
 #include "Snake.hpp"
-#include "Localization/LocaleLoader.hpp"
+#include "Localization/LocaleManager.hpp"
 #include "TileMap/TileMap.hpp"
 #include "TileMap/TileType.hpp"
 #include "UI/Button.hpp"
@@ -20,8 +20,8 @@ namespace
 	const sf::String tilesetFilename = L"Resources/Sprites/Tileset.png";
 	const sf::Vector2u tileSize(32, 32);
 
-	const sf::String defaultLocaleKey = L"ru";
-	const sf::String fontFilename = L"Resources/Fonts/SourceSansPro/SourceSansPro-Regular.ttf";
+	const std::string defaultLocaleKey = "en";
+	const sf::String fontFilename = L"Resources/Fonts/NotoSansSC/Regular.otf";
 
 	const GameScene firstScene = GameScene::MainMenu;
 
@@ -45,7 +45,8 @@ private:
 	// TODO: rename some variables so purpose is clear
 
 	sf::RenderWindow m_window;
-	LocaleLoader m_localeLoader;
+	LocaleManager m_localeManager;
+	Locale m_locale;
 	sf::RenderTexture m_renderTexture;
 	sf::Font m_font;
 	sf::RectangleShape m_mainMenuRect;

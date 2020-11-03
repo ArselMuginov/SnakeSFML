@@ -28,7 +28,8 @@ namespace
 
 Game::Game() :
 	m_window(),
-	m_localeLoader(),
+	m_localeManager(),
+	m_locale(),
 	m_renderTexture(),
 	m_font(),
 	m_mainMenuRect(sf::Vector2f(windowWidth * 0.5f, windowHeight * 0.7f)),
@@ -44,8 +45,8 @@ Game::Game() :
 	m_snake(snakeStartPos, snakeStartDirection, snakeStartLength),
 	m_apple(0)
 {
-	m_localeLoader.loadLocale(defaultLocaleKey);
-	m_window.create(sf::VideoMode(windowWidth, windowHeight), m_localeLoader.getString(L"", L"window-title"), sf::Style::Titlebar | sf::Style::Close);
+	m_locale.load(m_localeManager.getLocalePath(defaultLocaleKey));
+	m_window.create(sf::VideoMode(windowWidth, windowHeight), m_locale({ "", "window-title" }), sf::Style::Titlebar | sf::Style::Close);
 
 	if (!m_renderTexture.create(windowWidth, windowHeight))
 	{
@@ -62,12 +63,12 @@ Game::Game() :
 	m_mainMenuRect.setOutlineThickness(1.f);
 	m_mainMenuRect.setOutlineColor(sf::Color::Black);
 
-	m_title.setString(m_localeLoader.getString(L"main-menu", L"game-title"));
+	m_title.setString(m_locale({ "main-menu", "game-title" }));
 	m_title.setFont(m_font);
 	m_title.setFillColor(sf::Color::Black);
 	positionWithBounds(m_title, windowWidth / 2, windowHeight * 0.2f);
 
-	m_startGameButton.setString(m_localeLoader.getString(L"main-menu", L"start-game"));
+	m_startGameButton.setString(m_locale({ "main-menu", "start-game" }));
 	m_startGameButton.setFont(m_font);
 	m_startGameButton.setCharacterSize(buttonTextCharacterSize);
 	m_startGameButton.setBorderThickness(1.f);
@@ -77,7 +78,7 @@ Game::Game() :
 	m_startGameButton.setBorderColor(sf::Color::Black);
 	positionWithBounds(m_startGameButton, windowWidth / 2, windowHeight * 0.45f);
 
-	m_exitButton.setString(m_localeLoader.getString(L"main-menu", L"exit-game"));
+	m_exitButton.setString(m_locale({ "main-menu", "exit-game" }));
 	m_exitButton.setFont(m_font);
 	m_exitButton.setCharacterSize(buttonTextCharacterSize);
 	m_exitButton.setBorderThickness(1.f);
