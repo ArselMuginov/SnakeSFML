@@ -127,7 +127,7 @@ namespace ui
 		{
 			m_background.setSize({
 				textBounds.left + textBounds.width + m_padding.left + m_padding.right,
-				textBounds.top + textBounds.height + m_padding.top + m_padding.down
+				textBounds.top + textBounds.height + m_padding.top + m_padding.bottom
 			});
 		}
 

@@ -4,33 +4,33 @@ namespace ui
 {
 	Padding::Padding() :
 		top(0),
-		left(0),
-		down(0),
-		right(0)
+		right(0),
+		bottom(0),
+		left(0)
 	{
 	}
 	
 	Padding::Padding(float padding) :
 		top(padding),
-		left(padding),
-		down(padding),
-		right(padding)
+		right(padding),
+		bottom(padding),
+		left(padding)
 	{
 	}
 	
 	Padding::Padding(float vertical, float horizontal) :
 		top(vertical),
-		left(horizontal),
-		down(vertical),
-		right(horizontal)
+		right(horizontal),
+		bottom(vertical),
+		left(horizontal)
 	{
 	}
 	
-	Padding::Padding(float top, float left, float down, float right) :
+	Padding::Padding(float top, float right, float bottom, float left) :
 		top(top),
-		left(left),
-		down(down),
-		right(right)
+		right(right),
+		bottom(bottom),
+		left(left)
 	{
 	}
 }

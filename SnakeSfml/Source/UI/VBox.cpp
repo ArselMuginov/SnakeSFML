@@ -9,7 +9,7 @@ namespace ui
 			bounds.left + padding.left,
 			bounds.top + padding.top,
 			bounds.width - padding.left - padding.right,
-			bounds.height - padding.top - padding.down
+			bounds.height - padding.top - padding.bottom
 		);
 		sf::Vector2f currentPosition(int(boundsPadded.left), int(boundsPadded.top));
 

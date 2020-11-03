@@ -25,7 +25,7 @@ namespace ui
 		m_children.push_back(std::move(element));
 	}
 
-	void Layout::removeElement(size_t index)
+	void Layout::removeElement(std::size_t index)
 	{
 		m_children.erase(std::next(m_children.begin(), index));
 	}
@@ -61,7 +61,7 @@ namespace ui
 		}
 	}
 
-	const UIElement& Layout::operator[](size_t index) const
+	const UIElement& Layout::operator[](std::size_t index) const
 	{
 		return *m_children[index];
 	}

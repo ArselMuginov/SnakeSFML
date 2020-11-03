@@ -5,6 +5,7 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <vector>
 #include <memory>
+#include <cstddef>
 
 namespace ui
 {
@@ -22,12 +23,12 @@ namespace ui
 		Layout(const sf::Vector2f& size);
 
 		void addElement(std::unique_ptr<UIElement> element);
-		void removeElement(size_t index);
+		void removeElement(std::size_t index);
 		virtual void update() = 0;
 		virtual sf::FloatRect getLocalBounds() const;
 		void setStyle(Style style);
 
-		const UIElement& operator[](size_t index) const;
+		const UIElement& operator[](std::size_t index) const;
 		
 		Padding padding;
 		float margin;
