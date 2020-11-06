@@ -9,6 +9,7 @@
 // TODO: refactor GUI positioning to be more clear
 // TODO: finish game logic
 // TODO: add localized locale names and a way to choose locale
+// TODO: location of executable
 
 int main()
 {

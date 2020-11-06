@@ -1,4 +1,4 @@
-#include "Locale.hpp"
+#include "Localization/Locale.hpp"
 
 Locale::Locale() : m_data() {}
 
@@ -11,7 +11,7 @@ void Locale::load(const std::filesystem::path& path)
 	while (std::getline(localeFile, line))
 	{
 		// Empty or comment
-		if (line.empty() or line[0] == '#')
+		if (line.empty() || line[0] == '#')
 		{
 			continue;
 		}

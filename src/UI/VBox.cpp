@@ -1,8 +1,8 @@
-#include "HBox.hpp"
+#include "UI/VBox.hpp"
 
 namespace ui
 {
-	void HBox::update()
+	void VBox::update()
 	{
 		sf::FloatRect bounds = background.getLocalBounds();
 		sf::FloatRect boundsPadded(
@@ -22,12 +22,12 @@ namespace ui
 			for (const auto& element : m_children)
 			{
 				element->setPosition(currentPosition);
-				currentPosition.x += int(element->getGlobalBounds().width + margin);
+				currentPosition.y += int(element->getGlobalBounds().height + margin);
 			}
 		}
 	}
 
-	void HBox::draw(sf::RenderTarget& target, sf::RenderStates states) const
+	void VBox::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		states.transform *= getTransform();
 		states.texture = nullptr;

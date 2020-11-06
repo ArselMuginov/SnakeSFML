@@ -1,7 +1,7 @@
-#include "LocaleManager.hpp"
+#include "Localization/LocaleManager.hpp"
 
 LocaleManager::LocaleManager() :
-	m_localesFolder("Resources/Locales"),
+	m_localesFolder("../resources/Locales"),
 	m_dataFileName("data"),
 	m_nameFileName("name"),
 	m_localeNames(),

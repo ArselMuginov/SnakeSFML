@@ -17,11 +17,11 @@ namespace
 
 	const unsigned int boardWidth = 20;
 	const unsigned int boardHeight = 20;
-	const sf::String tilesetFilename = L"Resources/Sprites/Tileset.png";
+	const sf::String tilesetFilename = L"../resources/Sprites/Tileset.png";
 	const sf::Vector2u tileSize(32, 32);
 
 	const std::string defaultLocaleKey = "en";
-	const sf::String fontFilename = L"Resources/Fonts/NotoSansSC/Regular.otf";
+	const sf::String fontFilename = L"../resources/Fonts/NotoSansSC/Regular.otf";
 
 	const GameScene firstScene = GameScene::MainMenu;
 
