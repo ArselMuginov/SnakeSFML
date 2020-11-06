@@ -7,7 +7,7 @@ Simple snake game using C++ and SFML
 
 ## Dependencies
 - C++17
-- SFML 2.5.1
+- SFML 2.5.1 x64
   - System module
   - Window module
   - Graphics module
