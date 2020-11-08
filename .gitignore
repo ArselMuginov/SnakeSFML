@@ -1,5 +1,14 @@
 # Visual Studio cache/options directory
 /.vs/
 
+# Visual Studio CMake settings
+/CMakeSettings.json
+
+# VS Code workspace settings
+/.vscode/
+
 # Build results
-/out/
+/[Bb]uild/
+
+# Install results
+/[Ii]nstall/

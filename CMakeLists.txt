@@ -1,5 +1,5 @@
-﻿cmake_minimum_required (VERSION 3.8)
-project ("SnakeSFML")
+﻿cmake_minimum_required (VERSION 3.13)
+project ("SnakeSfml")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -17,10 +17,5 @@ install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 install(DIRECTORY resources DESTINATION .)
 
 # Forward DLLs path to script
-if(${CMAKE_CONFIGURATION_TYPES} STREQUAL "Debug")
-    install(CODE "set(DLL_PATH \"${PROJECT_SOURCE_DIR}/extlibs/bin/Debug\")")
-elseif(${CMAKE_CONFIGURATION_TYPES} STREQUAL "Release")
-    install(CODE "set(DLL_PATH \"${PROJECT_SOURCE_DIR}/extlibs/bin/Release\")")
-endif()
-
+install(CODE "set(DLL_PATH \"${PROJECT_SOURCE_DIR}/extlibs/bin/*\")")
 install(SCRIPT bundle.cmake)

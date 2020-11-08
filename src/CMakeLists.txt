@@ -1,4 +1,4 @@
-file(GLOB SOURCES "*.cpp")
+set(SOURCES Apple.cpp Game.cpp Main.cpp Snake.cpp)
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})
 
 add_subdirectory(Localization)
