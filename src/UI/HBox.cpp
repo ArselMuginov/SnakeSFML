@@ -2,6 +2,12 @@
 
 namespace ui
 {
+	template <class... Ts>
+	std::unique_ptr<HBox> HBox::create(Ts&&... args)
+	{
+		return std::make_unique<HBox>(std::forward<Ts>(args)...);
+	}
+
 	void HBox::update()
 	{
 		sf::FloatRect bounds = background.getLocalBounds();

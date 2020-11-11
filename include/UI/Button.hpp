@@ -20,6 +20,9 @@ namespace ui
 		Button(const sf::String& string, const sf::Font& font, unsigned int characterSize = 30);
 		Button(const sf::Vector2f& size);
 
+		template <class... Ts>
+		static std::unique_ptr<Button> create(Ts&&... args);
+
 		virtual sf::FloatRect getLocalBounds() const;
 
 		void setString(const sf::String& string);

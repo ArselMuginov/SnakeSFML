@@ -20,6 +20,12 @@ namespace ui
 	{
 	}
 
+	template <class... Ts>
+	std::unique_ptr<Layout> Layout::create(Ts&&... args)
+	{
+		return std::make_unique<Layout>(std::forward<Ts>(args)...);
+	}
+
 	void Layout::addElement(std::unique_ptr<UIElement> element)
 	{
 		m_children.push_back(std::move(element));

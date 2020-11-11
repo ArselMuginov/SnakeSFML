@@ -22,6 +22,9 @@ namespace ui
 		Layout();
 		Layout(const sf::Vector2f& size);
 
+		template <class... Ts>
+		static std::unique_ptr<Layout> create(Ts&&... args);
+
 		void addElement(std::unique_ptr<UIElement> element);
 		void removeElement(std::size_t index);
 		virtual void update() = 0;

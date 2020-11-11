@@ -30,6 +30,12 @@ namespace ui
 		update();
 	}
 
+	template <class... Ts>
+	std::unique_ptr<Button> Button::create(Ts&&... args)
+	{
+		return std::make_unique<Button>(std::forward<Ts>(args)...);
+	}
+
 	sf::FloatRect Button::getLocalBounds() const
 	{
 		return m_background.getGlobalBounds();

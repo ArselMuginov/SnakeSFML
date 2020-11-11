@@ -11,6 +11,12 @@ namespace ui
 	{
 	}
 
+	template <class... Ts>
+	std::unique_ptr<Text> Text::create(Ts&&... args)
+	{
+		return std::make_unique<Text>(std::forward<Ts>(args)...);
+	}
+
 	sf::FloatRect Text::getLocalBounds() const
 	{
 		return text.getLocalBounds();

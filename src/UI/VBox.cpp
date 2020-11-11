@@ -2,6 +2,12 @@
 
 namespace ui
 {
+	template <class... Ts>
+	std::unique_ptr<VBox> VBox::create(Ts&&... args)
+	{
+		return std::make_unique<VBox>(std::forward<Ts>(args)...);
+	}
+
 	void VBox::update()
 	{
 		sf::FloatRect bounds = background.getLocalBounds();
