@@ -6,15 +6,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(SFML 2.5 REQUIRED COMPONENTS graphics)
 
-include_directories(include)
-
+include_directories(src)
 add_executable(${PROJECT_NAME} "")
 add_subdirectory(src)
-
 target_link_libraries(${PROJECT_NAME} sfml-graphics)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
-install(DIRECTORY resources DESTINATION .)
+install(DIRECTORY data DESTINATION .)
 
 # Forward DLLs path to script
 install(CODE "set(DLL_PATH \"${PROJECT_SOURCE_DIR}/extlibs/bin/*\")")

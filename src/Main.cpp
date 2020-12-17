@@ -5,24 +5,13 @@
 // TODO: graphic for mouse hover and click
 // TODO: what to do with locale agnostic strings like window-title?
 // TODO: graceful error handling
-// TODO: group GUI elements?
-// TODO: refactor GUI positioning to be more clear
+// TODO: add GUI anchors like {.5, .5} = center, and direction {-1, 0} = to left
 // TODO: finish game logic
-// TODO: add localized locale names and a way to choose locale
-// TODO: location of executable
+// TODO: finish locale logic
 
 int main()
 {
-	try
-	{
-		Game game;
-		game.run();
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return 1;
-	}
-
+	Game game;
+	game.run();
 	return 0;
 }

@@ -1,4 +1,4 @@
-#include "Localization/Locale.hpp"
+#include "Locale.hpp"
 
 Locale::Locale() : m_data() {}
 
