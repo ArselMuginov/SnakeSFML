@@ -1,11 +1,5 @@
 #include "VBox.hpp"
 
-template <class... Ts>
-std::unique_ptr<VBox> VBox::create(Ts&&... args)
-{
-	return std::make_unique<VBox>(std::forward<Ts>(args)...);
-}
-
 void VBox::update()
 {
 	sf::FloatRect bounds = background.getLocalBounds();
@@ -28,17 +22,5 @@ void VBox::update()
 			element->setPosition(currentPosition);
 			currentPosition.y += int(element->getGlobalBounds().height + margin);
 		}
-	}
-}
-
-void VBox::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	states.transform *= getTransform();
-	states.texture = nullptr;
-
-	target.draw(background, states);
-	for (const auto& child : m_children)
-	{
-		target.draw(*child, states);
 	}
 }

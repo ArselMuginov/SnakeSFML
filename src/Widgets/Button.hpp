@@ -19,7 +19,10 @@ public:
 	Button(const sf::Vector2f& size);
 
 	template <class... Ts>
-	static std::unique_ptr<Button> create(Ts&&... args);
+	static std::unique_ptr<Button> create(Ts&&... args)
+	{
+		return std::make_unique<Button>(std::forward<Ts>(args)...);
+	}
 
 	virtual sf::FloatRect getLocalBounds() const;
 

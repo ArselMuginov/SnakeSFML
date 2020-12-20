@@ -1,7 +1,7 @@
 #include "LocaleManager.hpp"
 
-LocaleManager::LocaleManager() :
-	c_localesFolder{"data/Locales"},
+LocaleManager::LocaleManager(std::string_view rootPath) :
+	c_localesFolder{std::string{rootPath} + "data/Locales"},
 	c_dataFileName{"data"},
 	c_nameFileName{"name"},
 	m_localeNames{},
@@ -25,12 +25,13 @@ const std::unordered_map<std::string, sf::String>& LocaleManager::getLocaleNames
 	return m_localeNames;
 }
 
-const std::filesystem::path& LocaleManager::getLocalePath(const std::string& localeKey)
+const std::filesystem::path& LocaleManager::getLocalePath(std::string_view localeKey)
 {
-	if (m_localePaths.find(localeKey) == m_localePaths.end())
+	const auto& iter = m_localePaths.find(std::string{localeKey});
+	if (iter == m_localePaths.end())
 	{
 		throw "No locale found with specified key";
 	}
 
-	return m_localePaths.at(localeKey);
+	return iter->second;
 }

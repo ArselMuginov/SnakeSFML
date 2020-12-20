@@ -6,11 +6,11 @@
 Game::Game() :
 	c_rootPath{wai::getExecutablePath() + "\\..\\"},
 	m_window{},
-	m_localeManager{},
-	m_locale{},
-	m_gui{c_rootPath}
+	m_localeManager{c_rootPath},
+	m_locale{m_localeManager.getLocalePath(c_defaultLocaleKey)},
+	m_gui{c_rootPath, m_locale},
+	m_activeScene{c_firstScene}
 {
-	m_locale.load(m_localeManager.getLocalePath(defaultLocaleKey));
 	m_window.create(
 		c_videoMode,
 		m_locale({"", "window-title"}),

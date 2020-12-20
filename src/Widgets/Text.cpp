@@ -9,12 +9,6 @@ Text::Text(const sf::String& string, const sf::Font& font, unsigned int characte
 {
 }
 
-template <class... Ts>
-std::unique_ptr<Text> Text::create(Ts&&... args)
-{
-	return std::make_unique<Text>(std::forward<Ts>(args)...);
-}
-
 sf::FloatRect Text::getLocalBounds() const
 {
 	return text.getLocalBounds();

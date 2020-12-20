@@ -10,10 +10,12 @@ public:
 	Text(const sf::String& string, const sf::Font& font, unsigned int characterSize = 30);
 
 	template <class... Ts>
-	static std::unique_ptr<Text> create(Ts&&... args);
+	static std::unique_ptr<Text> create(Ts&&... args)
+	{
+		return std::make_unique<Text>(std::forward<Ts>(args)...);
+	}
 
 	virtual sf::FloatRect getLocalBounds() const;
-
 	sf::Text text;
 
 private:

@@ -9,6 +9,7 @@ class Locale
 {
 public:
 	Locale();
+	Locale(const std::filesystem::path& path);
 	void load(const std::filesystem::path& path);
 	void unload();
 	const sf::String& operator()(std::pair<std::string, std::string> key) const;

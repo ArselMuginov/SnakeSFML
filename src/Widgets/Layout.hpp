@@ -20,14 +20,12 @@ public:
 	Layout();
 	Layout(const sf::Vector2f& size);
 
-	template <class... Ts>
-	static std::unique_ptr<Layout> create(Ts&&... args);
-
-	void addElement(std::unique_ptr<Widget> element);
-	void removeElement(std::size_t index);
+	void addWidget(std::unique_ptr<Widget> element);
+	void removeWidget(std::size_t index);
 	virtual void update() = 0;
 	virtual sf::FloatRect getLocalBounds() const;
 	void setStyle(Style style);
+	void setSize(const sf::Vector2f& size);
 
 	const Widget& operator[](std::size_t index) const;
 
@@ -37,5 +35,7 @@ public:
 	sf::RectangleShape background;
 
 protected:
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
 	std::vector<std::unique_ptr<Widget>> m_children;
 };

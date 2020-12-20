@@ -10,6 +10,7 @@ include_directories(src)
 add_executable(${PROJECT_NAME} "")
 add_subdirectory(src)
 target_link_libraries(${PROJECT_NAME} sfml-graphics)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 install(DIRECTORY data DESTINATION .)

@@ -1,6 +1,11 @@
 #include "Locale.hpp"
 
-Locale::Locale() : m_data() {}
+Locale::Locale() : m_data{} {}
+
+Locale::Locale(const std::filesystem::path& path) : m_data{}
+{
+	load(path);
+}
 
 void Locale::load(const std::filesystem::path& path)
 {

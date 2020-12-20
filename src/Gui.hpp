@@ -1,7 +1,7 @@
 #pragma once
+#include "Localization/Locale.hpp"
 #include "Resource/FontHolder.hpp"
-#include "Widgets/Button.hpp"
-#include "Widgets/Text.hpp"
+#include "Widgets/HBox.hpp"
 #include "Widgets/VBox.hpp"
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/Drawable.hpp>
@@ -10,7 +10,7 @@
 class Gui : public sf::Drawable
 {
 public:
-	Gui(const std::string& rootPath);
+	Gui(std::string_view rootPath, const Locale& locale);
 
 	void handleInput(const sf::Event& event);
 	void update();
@@ -20,14 +20,11 @@ private:
 
 	static constexpr unsigned int c_titleCharacterSize{32};
 	static constexpr unsigned int c_buttonTextCharacterSize{24};
-
 	const sf::Color c_backgroundColor{122, 168, 132};
-
 	const FontHolder c_fontHolder;
+	const Locale& c_locale;
 
 	VBox m_mainMenuBox;
-	Text m_title;
-	Button m_startButton;
-	Button m_exitButton;
+	HBox m_gameBox;
 	sf::Drawable* m_mainDrawable;
 };

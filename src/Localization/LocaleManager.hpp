@@ -5,10 +5,10 @@
 class LocaleManager
 {
 public:
-	LocaleManager();
+	LocaleManager(std::string_view rootPath);
 
 	const std::unordered_map<std::string, sf::String>& getLocaleNames();
-	const std::filesystem::path& getLocalePath(const std::string& localeKey);
+	const std::filesystem::path& getLocalePath(std::string_view localeKey);
 
 private:
 	const std::filesystem::path c_localesFolder;

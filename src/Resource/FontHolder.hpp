@@ -13,7 +13,7 @@ enum class FontId
 class FontHolder : public ResourceHolder<FontId, sf::Font>
 {
 public:
-	FontHolder(const std::string& rootPath);
+	FontHolder(std::string_view rootPath);
 
 private:
 	static constexpr std::array<std::string_view, 2> c_paths{

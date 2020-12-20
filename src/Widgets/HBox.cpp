@@ -1,11 +1,5 @@
 #include "HBox.hpp"
 
-template <class... Ts>
-std::unique_ptr<HBox> HBox::create(Ts&&... args)
-{
-	return std::make_unique<HBox>(std::forward<Ts>(args)...);
-}
-
 void HBox::update()
 {
 	sf::FloatRect bounds = background.getLocalBounds();
@@ -28,17 +22,5 @@ void HBox::update()
 			element->setPosition(currentPosition);
 			currentPosition.x += int(element->getGlobalBounds().width + margin);
 		}
-	}
-}
-
-void HBox::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	states.transform *= getTransform();
-	states.texture = nullptr;
-
-	target.draw(background, states);
-	for (const auto& child : m_children)
-	{
-		target.draw(*child, states);
 	}
 }

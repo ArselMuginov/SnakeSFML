@@ -28,12 +28,6 @@ Button::Button(const sf::Vector2f& size) :
 	update();
 }
 
-template <class... Ts>
-std::unique_ptr<Button> Button::create(Ts&&... args)
-{
-	return std::make_unique<Button>(std::forward<Ts>(args)...);
-}
-
 sf::FloatRect Button::getLocalBounds() const
 {
 	return m_background.getGlobalBounds();
@@ -96,22 +90,22 @@ void Button::setStyle(Style style)
 {
 	switch (style)
 	{
-		case Style::WhiteOutline:
-			m_background.setFillColor(sf::Color::Transparent);
-			m_background.setOutlineColor(sf::Color::White);
-			m_background.setOutlineThickness(1);
-			m_text.setFillColor(sf::Color::White);
-			break;
+	case Style::WhiteOutline:
+		m_background.setFillColor(sf::Color::Transparent);
+		m_background.setOutlineColor(sf::Color::White);
+		m_background.setOutlineThickness(1);
+		m_text.setFillColor(sf::Color::White);
+		break;
 
-		case Style::BlackOutline:
-			m_background.setFillColor(sf::Color::Transparent);
-			m_background.setOutlineColor(sf::Color::Black);
-			m_background.setOutlineThickness(1);
-			m_text.setFillColor(sf::Color::Black);
-			break;
+	case Style::BlackOutline:
+		m_background.setFillColor(sf::Color::Transparent);
+		m_background.setOutlineColor(sf::Color::Black);
+		m_background.setOutlineThickness(1);
+		m_text.setFillColor(sf::Color::Black);
+		break;
 
-		default:
-			break;
+	default:
+		break;
 	}
 }
 
@@ -132,7 +126,7 @@ void Button::update()
 		m_background.setSize({
 			textBounds.left + textBounds.width + m_padding.left + m_padding.right,
 			textBounds.top + textBounds.height + m_padding.top + m_padding.bottom
-			});
+		});
 	}
 
 	const auto size = m_background.getSize();
