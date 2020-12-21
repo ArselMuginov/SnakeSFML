@@ -11,7 +11,7 @@ FontHolder::FontHolder(std::string_view rootPath)
 
 		m_resources.insert({fontId, std::make_unique<sf::Font>()});
 		bool loaded = m_resources.at(fontId)->loadFromFile(fontPath);
-		
+
 		if (!loaded)
 		{
 			std::ostringstream oss;

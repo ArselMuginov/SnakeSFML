@@ -12,6 +12,11 @@ add_subdirectory(src)
 target_link_libraries(${PROJECT_NAME} sfml-graphics)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall)
 
+if(MSVC)
+	# Ignore inline stuff, defined as deleted, bytes padding
+	target_compile_options(${PROJECT_NAME} PRIVATE /wd4514 /wd4625 /wd4626 /wd4710 /wd4820 /wd5026 /wd5027)
+endif()
+
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 install(DIRECTORY data DESTINATION .)
 
