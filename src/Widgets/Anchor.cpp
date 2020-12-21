@@ -1,4 +1,5 @@
 #include "Anchor.hpp"
+#include <stdexcept>
 #include <utility>
 
 const Anchor Anchor::TopLeft{0.0f, 0.0f};
@@ -40,6 +41,6 @@ constexpr void Anchor::checkRange()
 {
 	if (m_x < 0 || m_x > 1 || m_y < 0 || m_y > 1)
 	{
-		throw "Anchor values not in range";
+		throw std::out_of_range{"Anchor value(s) not in range"};
 	}
 }

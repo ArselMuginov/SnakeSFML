@@ -30,8 +30,7 @@ const std::filesystem::path& LocaleManager::getLocalePath(std::string_view local
 	const auto& iter = m_localePaths.find(std::string{localeKey});
 	if (iter == m_localePaths.end())
 	{
-		throw "No locale found with specified key";
+		throw std::invalid_argument{"No locale found with specified key"};
 	}
-
 	return iter->second;
 }

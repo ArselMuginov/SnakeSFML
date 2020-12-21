@@ -17,7 +17,7 @@ private:
 	void render();
 
 	static constexpr GameScene c_firstScene{GameScene::MainMenu};
-	static constexpr std::string_view c_defaultLocaleKey{"en"};
+	static constexpr std::string_view c_defaultLocaleKey{"ens"};
 	const sf::VideoMode c_videoMode{640, 640};
 	const sf::Color c_backgroundColor{122, 168, 132};
 	const std::string c_rootPath;
