@@ -5,7 +5,7 @@ FontHolder::FontHolder(std::string_view rootPath)
 {
 	for (std::size_t i = 0; i < c_paths.size(); i++)
 	{
-		FontId fontId{i};
+		FontId fontId{static_cast<FontId>(i)};
 		std::string fontPath{rootPath};
 		fontPath.append(c_paths[i]);
 

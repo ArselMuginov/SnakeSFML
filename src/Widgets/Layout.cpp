@@ -1,4 +1,5 @@
 #include "Layout.hpp"
+#include <SFML/Graphics/RenderTarget.hpp>
 
 Layout::Layout() :
 	padding(),
@@ -18,12 +19,12 @@ Layout::Layout(const sf::Vector2f& size) :
 {
 }
 
-void Layout::addWidget(std::unique_ptr<Widget> element)
+void Layout::add(std::unique_ptr<Widget> element)
 {
 	m_children.push_back(std::move(element));
 }
 
-void Layout::removeWidget(std::size_t index)
+void Layout::remove(std::size_t index)
 {
 	m_children.erase(std::next(m_children.begin(), index));
 }

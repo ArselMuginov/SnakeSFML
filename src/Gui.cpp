@@ -1,5 +1,6 @@
 #include "Gui.hpp"
 #include "Widgets/Button.hpp"
+#include <SFML/Graphics/RenderTarget.hpp>
 
 Gui::Gui(std::string_view rootPath, const Locale& locale) :
 	c_fontHolder{rootPath},
@@ -19,7 +20,7 @@ Gui::Gui(std::string_view rootPath, const Locale& locale) :
 	);
 	startButton->setSize(10, 10);
 	startButton->setStyle(Button::Style::BlackOutline);
-	m_mainMenuBox.addWidget(std::move(startButton));
+	m_mainMenuBox.add(std::move(startButton));
 
 	auto exitButton = Button::create(
 		c_locale("main-menu", "exit-game"),
@@ -28,7 +29,7 @@ Gui::Gui(std::string_view rootPath, const Locale& locale) :
 	);
 	exitButton->setSize(10, 10);
 	exitButton->setStyle(Button::Style::BlackOutline);
-	m_mainMenuBox.addWidget(std::move(exitButton));
+	m_mainMenuBox.add(std::move(exitButton));
 
 	m_gameBox.setStyle(Layout::Style::BlackBorder);
 	m_gameBox.setPosition(10, 10);

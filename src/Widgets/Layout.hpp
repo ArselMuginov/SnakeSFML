@@ -2,7 +2,6 @@
 #include "Widgets/Padding.hpp"
 #include "Widgets/Widget.hpp"
 #include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
 #include <cstddef>
 #include <memory>
 #include <vector>
@@ -20,8 +19,8 @@ public:
 	Layout();
 	Layout(const sf::Vector2f& size);
 
-	void addWidget(std::unique_ptr<Widget> element);
-	void removeWidget(std::size_t index);
+	void add(std::unique_ptr<Widget> element);
+	void remove(std::size_t index);
 	virtual void update() = 0;
 	virtual sf::FloatRect getLocalBounds() const;
 	void setStyle(Style style);

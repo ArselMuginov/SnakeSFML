@@ -1,5 +1,4 @@
 ﻿#include "Game.hpp"
-#include <iostream>
 
 // TODO: graphic and logic to select buttons by keyboard
 // TODO: graphic for mouse hover and click

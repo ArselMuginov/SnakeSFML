@@ -3,7 +3,6 @@
 #include "Widgets/Widget.hpp"
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
 
 class Button : public Widget
 {

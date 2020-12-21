@@ -1,4 +1,5 @@
 #include "Text.hpp"
+#include <SFML/Graphics/RenderTarget.hpp>
 
 Text::Text() : text()
 {

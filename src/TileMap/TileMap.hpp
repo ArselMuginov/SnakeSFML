@@ -1,6 +1,8 @@
 #pragma once
 #include "TileMap/TileType.hpp"
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Drawable.hpp>
+#include <SFML/Graphics/Transformable.hpp>
+#include <SFML/Graphics/VertexArray.hpp>
 
 class TileMap : public sf::Drawable, public sf::Transformable
 {

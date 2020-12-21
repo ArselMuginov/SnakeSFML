@@ -1,8 +1,10 @@
 #pragma once
-#include <SFML/System/Vector2.hpp>
 
 namespace sf
 {
+	template <typename T>
+	class Vector2;
+
 	template <typename T>
 	Vector2<T> operator *(const Vector2<T>& left, const Vector2<T>& right)
 	{

@@ -1,7 +1,6 @@
 ﻿#include "Game.hpp"
 #include "whereami/wrapper.hpp"
 #include <SFML/Window/Event.hpp>
-#include <random>
 
 Game::Game() :
 	c_rootPath{wai::getExecutablePath() + "\\..\\"},

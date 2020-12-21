@@ -1,4 +1,5 @@
 #include "Button.hpp"
+#include <SFML/Graphics/RenderTarget.hpp>
 
 // TODO: ensure to call resize rect stuff after setting font and string?
 

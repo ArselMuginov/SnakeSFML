@@ -1,4 +1,6 @@
 #include "TileMap.hpp"
+#include <SFML/Graphics/RenderTarget.hpp>
+#include <SFML/Graphics/Texture.hpp>
 
 TileMap::TileMap(const sf::Texture& tileset, sf::Vector2u tileSize, unsigned int width, unsigned int height) :
 	m_vertices(sf::Quads, width * height * 4),

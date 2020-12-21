@@ -1,7 +1,6 @@
 #pragma once
 #include "Widgets/Widget.hpp"
 #include <SFML/Graphics/Text.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
 
 class Text : public Widget
 {
