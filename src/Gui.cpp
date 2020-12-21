@@ -13,7 +13,7 @@ Gui::Gui(std::string_view rootPath, const Locale& locale) :
 	m_mainMenuBox.setSize({100, 200});
 
 	auto startButton = Button::create(
-		c_locale({"main-menu", "start-game"}),
+		c_locale("main-menu", "start-game"),
 		c_fontHolder[FontId::Default],
 		c_buttonTextCharacterSize
 	);
@@ -22,7 +22,7 @@ Gui::Gui(std::string_view rootPath, const Locale& locale) :
 	m_mainMenuBox.addWidget(std::move(startButton));
 
 	auto exitButton = Button::create(
-		c_locale({"main-menu", "exit-game"}),
+		c_locale("main-menu", "exit-game"),
 		c_fontHolder[FontId::Default],
 		c_buttonTextCharacterSize
 	);

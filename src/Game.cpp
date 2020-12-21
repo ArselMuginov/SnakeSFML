@@ -13,7 +13,7 @@ Game::Game() :
 {
 	m_window.create(
 		c_videoMode,
-		m_locale({"", "window-title"}),
+		m_locale("", "window-title"),
 		sf::Style::Titlebar | sf::Style::Close
 	);
 }

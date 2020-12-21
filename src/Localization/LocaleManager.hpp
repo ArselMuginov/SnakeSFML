@@ -1,5 +1,8 @@
 #pragma once
 #include "Localization/Locale.hpp"
+#include <SFML/System/String.hpp>
+#include <filesystem>
+#include <string_view>
 #include <unordered_map>
 
 class LocaleManager

@@ -1,4 +1,5 @@
 #include "LocaleManager.hpp"
+#include <fstream>
 
 LocaleManager::LocaleManager(std::string_view rootPath) :
 	c_localesFolder{std::string{rootPath} + "data/Locales"},

@@ -1,4 +1,5 @@
 #include "Locale.hpp"
+#include <fstream>
 
 Locale::Locale() : m_data{} {}
 
@@ -41,7 +42,7 @@ void Locale::unload()
 	m_data.clear();
 }
 
-const sf::String& Locale::operator()(std::pair<std::string, std::string> key) const
+const sf::String& Locale::operator()(std::string_view section, std::string_view key) const
 {
-	return m_data.at(key);
+	return m_data.at({std::string{section}, std::string{key}});
 }
