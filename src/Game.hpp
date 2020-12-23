@@ -22,9 +22,9 @@ private:
 	const sf::Color c_backgroundColor{122, 168, 132};
 	const std::string c_rootPath;
 
-	sf::RenderWindow m_window;
 	LocaleManager m_localeManager;
 	Locale m_locale;
+	sf::RenderWindow m_window;
 	Gui m_gui;
 	GameScene m_activeScene;
 };

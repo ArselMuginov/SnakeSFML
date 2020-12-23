@@ -4,17 +4,12 @@
 
 Game::Game() :
 	c_rootPath{wai::getExecutablePath() + "\\..\\"},
-	m_window{},
 	m_localeManager{c_rootPath},
 	m_locale{m_localeManager.getLocalePath(c_defaultLocaleKey)},
-	m_gui{c_rootPath, m_locale},
+	m_window{c_videoMode, m_locale("", "window-title"), sf::Style::Titlebar | sf::Style::Close},
+	m_gui{m_window, c_rootPath, m_locale},
 	m_activeScene{c_firstScene}
 {
-	m_window.create(
-		c_videoMode,
-		m_locale("", "window-title"),
-		sf::Style::Titlebar | sf::Style::Close
-	);
 }
 
 void Game::run()

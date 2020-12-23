@@ -1,8 +1,6 @@
 #include "Button.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 
-// TODO: ensure to call resize rect stuff after setting font and string?
-
 Button::Button() :
 	m_background(),
 	m_text(),
@@ -17,7 +15,6 @@ Button::Button(const sf::String& string, const sf::Font& font, unsigned int char
 	m_padding(),
 	m_fixedSize(false)
 {
-	update();
 }
 
 Button::Button(const sf::Vector2f& size) :
@@ -26,7 +23,6 @@ Button::Button(const sf::Vector2f& size) :
 	m_padding(),
 	m_fixedSize(true)
 {
-	update();
 }
 
 sf::FloatRect Button::getLocalBounds() const
@@ -37,39 +33,33 @@ sf::FloatRect Button::getLocalBounds() const
 void Button::setString(const sf::String& string)
 {
 	m_text.setString(string);
-	update();
 }
 
 void Button::setFont(const sf::Font& font)
 {
 	m_text.setFont(font);
-	update();
 }
 
 void Button::setCharacterSize(unsigned int characterSize)
 {
 	m_text.setCharacterSize(characterSize);
-	update();
 }
 
 void Button::setBorderThickness(float outlineThickness)
 {
 	m_background.setOutlineThickness(outlineThickness);
-	update();
 }
 
 void Button::setSize(float rectWidth, float rectHeight)
 {
 	m_fixedSize = true;
 	m_background.setSize(sf::Vector2f(rectWidth, rectHeight));
-	update();
 }
 
 void Button::setPadding(const Padding& padding)
 {
 	m_fixedSize = false;
 	m_padding = padding;
-	update();
 }
 
 void Button::setTextFillColor(sf::Color color)
@@ -110,16 +100,7 @@ void Button::setStyle(Style style)
 	}
 }
 
-void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	states.transform *= getTransform();
-	states.texture = nullptr;
-
-	target.draw(m_background, states);
-	target.draw(m_text, states);
-}
-
-void Button::update()
+void Button::updateLayout()
 {
 	const auto textBounds = m_text.getLocalBounds();
 	if (!m_fixedSize)
@@ -138,4 +119,13 @@ void Button::update()
 
 	m_background.setPosition(borderThickness, borderThickness);
 	m_text.setPosition(textX, textY);
+}
+
+void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	states.transform *= getTransform();
+	states.texture = nullptr;
+
+	target.draw(m_background, states);
+	target.draw(m_text, states);
 }

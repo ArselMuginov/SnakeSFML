@@ -36,12 +36,12 @@ public:
 	void setTextFillColor(sf::Color color);
 	void setBackgroundColor(sf::Color color);
 	void setBorderColor(sf::Color color);
-
 	void setStyle(Style style);
+
+	void updateLayout();
 
 private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	void update();
 
 	sf::RectangleShape m_background;
 	sf::Text m_text;

@@ -4,13 +4,13 @@
 #include "Widgets/HBox.hpp"
 #include "Widgets/VBox.hpp"
 #include <SFML/Graphics/Color.hpp>
-#include <SFML/Graphics/Drawable.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 
 class Gui : public sf::Drawable
 {
 public:
-	Gui(std::string_view rootPath, const Locale& locale);
+	Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale& locale);
 
 	void handleInput(const sf::Event& event);
 	void update();
@@ -21,6 +21,7 @@ private:
 	static constexpr unsigned int c_titleCharacterSize{32};
 	static constexpr unsigned int c_buttonTextCharacterSize{24};
 	const sf::Color c_backgroundColor{122, 168, 132};
+	const sf::RenderWindow& c_parent;
 	const FontHolder c_fontHolder;
 	const Locale& c_locale;
 
