@@ -1,6 +1,5 @@
 #include "Anchor.hpp"
 #include <stdexcept>
-#include <utility>
 
 const Anchor Anchor::TopLeft{0.0f, 0.0f};
 const Anchor Anchor::Top{0.5f, 0.0f};
@@ -16,7 +15,10 @@ constexpr Anchor::Anchor(float x, float y) :
 	m_x{x},
 	m_y{y}
 {
-	checkRange();
+	if (x < 0 || x > 1 || y < 0 || y > 1)
+	{
+		throw std::out_of_range{"Anchor value(s) not in range"};
+	}
 }
 
 constexpr float Anchor::x()
@@ -27,20 +29,4 @@ constexpr float Anchor::x()
 constexpr float Anchor::y()
 {
 	return m_y;
-}
-
-Anchor& Anchor::operator=(Anchor other) noexcept
-{
-	std::swap(m_x, other.m_x);
-	std::swap(m_y, other.m_y);
-	checkRange();
-	return *this;
-}
-
-constexpr void Anchor::checkRange()
-{
-	if (m_x < 0 || m_x > 1 || m_y < 0 || m_y > 1)
-	{
-		throw std::out_of_range{"Anchor value(s) not in range"};
-	}
 }

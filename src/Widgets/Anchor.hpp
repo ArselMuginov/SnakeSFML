@@ -6,7 +6,6 @@ public:
 	constexpr Anchor(float x, float y);
 	constexpr float x();
 	constexpr float y();
-	Anchor& operator=(Anchor other) noexcept;
 
 	static const Anchor TopLeft;
 	static const Anchor Top;
@@ -19,8 +18,6 @@ public:
 	static const Anchor BottomRight;
 
 private:
-	constexpr void checkRange();
-
 	float m_x;
 	float m_y;
 };
