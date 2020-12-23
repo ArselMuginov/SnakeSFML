@@ -1,21 +1,12 @@
 #include "Layout.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 
-Layout::Layout() :
-	padding(),
-	margin(0),
-	stretchContent(false),
-	background(),
-	m_children()
-{
-}
-
 Layout::Layout(const sf::Vector2f& size) :
-	padding(),
-	margin(0),
-	stretchContent(false),
-	background(size),
-	m_children()
+	padding{},
+	margin{0},
+	stretchContent{false},
+	background{size},
+	m_children{}
 {
 }
 

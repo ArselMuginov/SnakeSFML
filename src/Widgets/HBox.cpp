@@ -1,6 +1,6 @@
 #include "HBox.hpp"
 
-void HBox::update()
+void HBox::updateLayout()
 {
 	sf::FloatRect bounds = background.getLocalBounds();
 	sf::FloatRect boundsPadded(

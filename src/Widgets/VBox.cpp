@@ -1,6 +1,6 @@
 #include "VBox.hpp"
 
-void VBox::update()
+void VBox::updateLayout()
 {
 	sf::FloatRect bounds = background.getLocalBounds();
 	sf::FloatRect boundsPadded(

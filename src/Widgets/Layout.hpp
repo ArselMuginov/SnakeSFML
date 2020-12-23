@@ -16,12 +16,11 @@ public:
 		BlackBorder
 	};
 
-	Layout();
-	Layout(const sf::Vector2f& size);
+	Layout(const sf::Vector2f& size = sf::Vector2f{});
 
 	void add(std::unique_ptr<Widget> element);
 	void remove(std::size_t index);
-	virtual void update() = 0;
+	virtual void updateLayout() = 0;
 	virtual sf::FloatRect getLocalBounds() const;
 	void setStyle(Style style);
 	void setSize(const sf::Vector2f& size);

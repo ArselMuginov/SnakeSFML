@@ -1,7 +1,9 @@
 #include "Locale.hpp"
 #include <fstream>
 
-Locale::Locale() : m_data{} {}
+Locale::Locale() : m_data{}
+{
+}
 
 Locale::Locale(const std::filesystem::path& path) : m_data{}
 {

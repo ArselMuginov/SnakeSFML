@@ -5,7 +5,7 @@ class HBox : public Layout
 {
 public:
 	using Layout::Layout;
-	virtual void update();
+	virtual void updateLayout();
 
 	template <class... Ts>
 	static std::unique_ptr<HBox> create(Ts&&... args)
