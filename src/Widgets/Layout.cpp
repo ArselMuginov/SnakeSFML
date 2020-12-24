@@ -22,7 +22,7 @@ void Layout::remove(std::size_t index)
 
 sf::FloatRect Layout::getLocalBounds() const
 {
-	return background.getLocalBounds();
+	return background.getGlobalBounds();
 }
 
 void Layout::setStyle(Style style)

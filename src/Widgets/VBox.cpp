@@ -2,7 +2,10 @@
 
 void VBox::updateLayout()
 {
-	sf::FloatRect bounds = background.getLocalBounds();
+	float outlineThickness = background.getOutlineThickness();
+	background.setPosition(outlineThickness, outlineThickness);
+	
+	sf::FloatRect bounds = getLocalBounds();
 	sf::FloatRect boundsPadded(
 		bounds.left + padding.left,
 		bounds.top + padding.top,
