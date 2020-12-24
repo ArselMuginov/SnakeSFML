@@ -3,7 +3,7 @@
 
 Layout::Layout(const sf::Vector2f& size) :
 	padding{},
-	margin{0},
+	spacing{0},
 	stretchContent{false},
 	background{size},
 	m_children{}

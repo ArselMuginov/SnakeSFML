@@ -28,7 +28,7 @@ public:
 	const Widget& operator[](std::size_t index) const;
 
 	Padding padding;
-	float margin;
+	float spacing;
 	bool stretchContent;
 	sf::RectangleShape background;
 

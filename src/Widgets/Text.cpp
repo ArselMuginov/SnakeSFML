@@ -1,12 +1,12 @@
 #include "Text.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 
-Text::Text() : text()
+Text::Text() : text{}
 {
 }
 
 Text::Text(const sf::String& string, const sf::Font& font, unsigned int characterSize) :
-	text(string, font, characterSize)
+	text{string, font, characterSize}
 {
 }
 

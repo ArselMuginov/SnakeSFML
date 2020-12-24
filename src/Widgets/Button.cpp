@@ -2,26 +2,26 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 
 Button::Button() :
-	m_background(),
-	m_text(),
-	m_padding(),
-	m_fixedSize(false)
+	m_background{},
+	m_text{},
+	m_padding{},
+	m_fixedSize{false}
 {
 }
 
 Button::Button(const sf::String& string, const sf::Font& font, unsigned int characterSize) :
-	m_background(),
-	m_text(string, font, characterSize),
-	m_padding(),
-	m_fixedSize(false)
+	m_background{},
+	m_text{string, font, characterSize},
+	m_padding{},
+	m_fixedSize{false}
 {
 }
 
 Button::Button(const sf::Vector2f& size) :
-	m_background(size),
-	m_text(),
-	m_padding(),
-	m_fixedSize(true)
+	m_background{size},
+	m_text{},
+	m_padding{},
+	m_fixedSize{true}
 {
 }
 

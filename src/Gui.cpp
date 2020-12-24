@@ -12,7 +12,7 @@ Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale
 {
 	m_mainMenuBox.setStyle(Layout::Style::WhiteBorder);
 	m_mainMenuBox.setPosition(10, 10);
-	m_mainMenuBox.margin = 10;
+	m_mainMenuBox.spacing = 10;
 
 	auto startButton = Button::create(
 		c_locale("main-menu", "start-game"),
