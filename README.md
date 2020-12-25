@@ -3,6 +3,7 @@ Simple snake game using C++ and SFML
 
 ## Status
 - Currently game logic is not done
+- GUI is mostly done
 - Needs polishing
 
 ## Dependencies
@@ -11,3 +12,4 @@ Simple snake game using C++ and SFML
   - System module
   - Window module
   - Graphics module
+- [gpakosz/whereami](https://github.com/gpakosz/whereami) (included in code)
