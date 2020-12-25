@@ -7,12 +7,6 @@
 class Button : public Widget
 {
 public:
-	enum class Style
-	{
-		WhiteOutline,
-		BlackOutline
-	};
-
 	Button();
 	Button(const sf::String& string, const sf::Font& font, unsigned int characterSize = 30);
 	Button(const sf::Vector2f& size);
@@ -33,10 +27,9 @@ public:
 	void setSize(float rectWidth, float rectHeight);
 	void setPadding(const Padding& padding);
 
-	void setTextFillColor(sf::Color color);
-	void setBackgroundColor(sf::Color color);
-	void setBorderColor(sf::Color color);
-	void setStyle(Style style);
+	void setTextFillColor(const sf::Color& color);
+	void setBackgroundColor(const sf::Color& color);
+	void setBorderColor(const sf::Color& color);
 
 	void updateLayout();
 

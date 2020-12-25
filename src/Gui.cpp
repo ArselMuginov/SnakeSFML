@@ -10,9 +10,10 @@ Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale
 	m_gameBox{{200, 100}},
 	m_mainDrawable{}
 {
-	m_mainMenuBox.setStyle(Layout::Style::WhiteBorder);
-	m_mainMenuBox.setPosition(10, 10);
 	m_mainMenuBox.spacing = 10;
+	m_mainMenuBox.setBackgroundColor(sf::Color::Transparent);
+	m_mainMenuBox.setBorderThickness(1);
+	m_mainMenuBox.setBorderColor(sf::Color::White);
 
 	auto startButton = Button::create(
 		c_locale("main-menu", "start-game"),
@@ -20,7 +21,9 @@ Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale
 		c_buttonTextCharacterSize
 	);
 	//startButton->setSize(150, 40);
-	startButton->setStyle(Button::Style::WhiteOutline);
+	startButton->setBackgroundColor(sf::Color::Transparent);
+	startButton->setBorderThickness(1);
+	startButton->setBorderColor(sf::Color::White);
 	startButton->updateLayout();
 	m_mainMenuBox.add(std::move(startButton));
 
@@ -30,14 +33,18 @@ Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale
 		c_buttonTextCharacterSize
 	);
 	//exitButton->setSize(150, 40);
-	exitButton->setStyle(Button::Style::WhiteOutline);
+	exitButton->setBackgroundColor(sf::Color::Transparent);
+	exitButton->setBorderThickness(1);
+	exitButton->setBorderColor(sf::Color::White);
 	exitButton->updateLayout();
 	m_mainMenuBox.add(std::move(exitButton));
 
 	m_mainMenuBox.updateLayout();
 
-	m_gameBox.setStyle(Layout::Style::WhiteBorder);
-	m_gameBox.setPosition(10, 10);
+	m_gameBox.spacing = 10;
+	m_gameBox.setBackgroundColor(sf::Color::Transparent);
+	m_gameBox.setBorderThickness(1);
+	m_gameBox.setBorderColor(sf::Color::White);
 	m_gameBox.updateLayout();
 
 	m_mainDrawable = &m_mainMenuBox;

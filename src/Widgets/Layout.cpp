@@ -5,8 +5,8 @@ Layout::Layout(const sf::Vector2f& size) :
 	padding{},
 	spacing{0},
 	stretchContent{false},
-	background{size},
-	m_children{}
+	m_children{},
+	m_background{size}
 {
 }
 
@@ -22,38 +22,27 @@ void Layout::remove(std::size_t index)
 
 sf::FloatRect Layout::getLocalBounds() const
 {
-	return background.getGlobalBounds();
-}
-
-void Layout::setStyle(Style style)
-{
-	switch (style)
-	{
-		case Style::Invisible:
-			background.setFillColor(sf::Color::Transparent);
-			background.setOutlineThickness(0);
-			break;
-
-		case Style::WhiteBorder:
-			background.setFillColor(sf::Color::Transparent);
-			background.setOutlineColor(sf::Color::White);
-			background.setOutlineThickness(1);
-			break;
-
-		case Style::BlackBorder:
-			background.setFillColor(sf::Color::Transparent);
-			background.setOutlineColor(sf::Color::Black);
-			background.setOutlineThickness(1);
-			break;
-
-		default:
-			break;
-	}
+	return m_background.getGlobalBounds();
 }
 
 void Layout::setSize(const sf::Vector2f& size)
 {
-	background.setSize(size);
+	m_background.setSize(size);
+}
+
+void Layout::setBorderThickness(float borderThickness)
+{
+	m_background.setOutlineThickness(borderThickness);
+}
+
+void Layout::setBackgroundColor(const sf::Color& color)
+{
+	m_background.setFillColor(color);
+}
+
+void Layout::setBorderColor(const sf::Color& color)
+{
+	m_background.setOutlineColor(color);
 }
 
 const Widget& Layout::operator[](std::size_t index) const
@@ -66,7 +55,7 @@ void Layout::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	states.transform *= getTransform();
 	states.texture = nullptr;
 
-	target.draw(background, states);
+	target.draw(m_background, states);
 	for (const auto& child : m_children)
 	{
 		target.draw(*child, states);

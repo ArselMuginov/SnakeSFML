@@ -62,42 +62,19 @@ void Button::setPadding(const Padding& padding)
 	m_padding = padding;
 }
 
-void Button::setTextFillColor(sf::Color color)
+void Button::setTextFillColor(const sf::Color& color)
 {
 	m_text.setFillColor(color);
 }
 
-void Button::setBackgroundColor(sf::Color color)
+void Button::setBackgroundColor(const sf::Color& color)
 {
 	m_background.setFillColor(color);
 }
 
-void Button::setBorderColor(sf::Color color)
+void Button::setBorderColor(const sf::Color& color)
 {
 	m_background.setOutlineColor(color);
-}
-
-void Button::setStyle(Style style)
-{
-	switch (style)
-	{
-	case Style::WhiteOutline:
-		m_background.setFillColor(sf::Color::Transparent);
-		m_background.setOutlineColor(sf::Color::White);
-		m_background.setOutlineThickness(1);
-		m_text.setFillColor(sf::Color::White);
-		break;
-
-	case Style::BlackOutline:
-		m_background.setFillColor(sf::Color::Transparent);
-		m_background.setOutlineColor(sf::Color::Black);
-		m_background.setOutlineThickness(1);
-		m_text.setFillColor(sf::Color::Black);
-		break;
-
-	default:
-		break;
-	}
 }
 
 void Button::updateLayout()
