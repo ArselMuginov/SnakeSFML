@@ -42,7 +42,7 @@ Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale
 		c_fontHolder[FontId::Default],
 		c_buttonTextCharacterSize
 	);
-	//startButton->setSize(150, 40);
+	startButton->setSize(150, 40);
 	startButton->setBorderThickness(1);
 	startButton->updateLayout();
 	buttonsGroup->add(std::move(startButton));
@@ -52,7 +52,7 @@ Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale
 		c_fontHolder[FontId::Default],
 		c_buttonTextCharacterSize
 	);
-	//exitButton->setSize(150, 40);
+	exitButton->setSize(150, 40);
 	exitButton->setBorderThickness(1);
 	exitButton->updateLayout();
 	buttonsGroup->add(std::move(exitButton));

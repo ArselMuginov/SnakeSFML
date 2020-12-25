@@ -1,5 +1,6 @@
 #include "Button.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
+#include <cmath>
 
 Button::Button() :
 	m_background{},
@@ -82,7 +83,8 @@ void Button::setBorderColor(const sf::Color& color)
 
 void Button::updateLayout()
 {
-	const auto textBounds = m_text.getLocalBounds();
+	const sf::FloatRect textBounds = m_text.getLocalBounds();
+
 	if (!m_fixedSize)
 	{
 		m_background.setSize({
@@ -91,14 +93,13 @@ void Button::updateLayout()
 		});
 	}
 
-	const auto size = m_background.getSize();
 	const float borderThickness = m_background.getOutlineThickness();
-	// TODO: center for fixed size
-	const int textX = borderThickness + m_padding.left - textBounds.left / 2.f;
-	const int textY = borderThickness + m_padding.top - textBounds.top / 2.f;
-
 	m_background.setPosition(borderThickness, borderThickness);
-	m_text.setPosition(textX, textY);
+
+	m_text.setPosition(
+		std::round(m_background.getSize().x / 2.f - textBounds.left - textBounds.width / 2.f),
+		std::round(m_background.getSize().y / 2.f - textBounds.top - textBounds.height / 2.f)
+	);
 }
 
 void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
