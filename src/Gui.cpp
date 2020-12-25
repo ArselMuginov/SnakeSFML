@@ -1,6 +1,7 @@
 #include "Gui.hpp"
 #include "Widgets/Button.hpp"
 #include "Widgets/HBox.hpp"
+#include "Widgets/Label.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 
 Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale& locale) :
@@ -17,12 +18,24 @@ Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale
 	};
 
 	m_mainMenuBox.setSize(parentSize);
-	auto mainMenuCenter = VBox::create(sf::Vector2f{
+	auto mainMenuBorder = VBox::create(sf::Vector2f{
 		parentSize.x * 0.3f,
 		parentSize.y * 0.7f
 	});
-	mainMenuCenter->spacing = 10;
-	mainMenuCenter->setBorderThickness(1);
+	mainMenuBorder->setBorderThickness(1);
+
+	auto title = Label::create(
+		c_locale("main-menu", "game-title"),
+		c_fontHolder[FontId::Default],
+		c_titleCharacterSize
+	);
+	mainMenuBorder->add(std::move(title));
+
+	auto buttonsGroup = VBox::create(sf::Vector2f{
+		parentSize.x * 0.3f,
+		parentSize.y * 0.6f
+	});
+	buttonsGroup->spacing = 10;
 
 	auto startButton = Button::create(
 		c_locale("main-menu", "start-game"),
@@ -32,7 +45,7 @@ Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale
 	//startButton->setSize(150, 40);
 	startButton->setBorderThickness(1);
 	startButton->updateLayout();
-	mainMenuCenter->add(std::move(startButton));
+	buttonsGroup->add(std::move(startButton));
 
 	auto exitButton = Button::create(
 		c_locale("main-menu", "exit-game"),
@@ -42,10 +55,13 @@ Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale
 	//exitButton->setSize(150, 40);
 	exitButton->setBorderThickness(1);
 	exitButton->updateLayout();
-	mainMenuCenter->add(std::move(exitButton));
+	buttonsGroup->add(std::move(exitButton));
 
-	mainMenuCenter->updateLayout();
-	m_mainMenuBox.add(std::move(mainMenuCenter));
+	buttonsGroup->updateLayout();
+	mainMenuBorder->add(std::move(buttonsGroup));
+	mainMenuBorder->updateLayout();
+
+	m_mainMenuBox.add(std::move(mainMenuBorder));
 	m_mainMenuBox.updateLayout();
 
 	m_gameBox.setSize(parentSize);
