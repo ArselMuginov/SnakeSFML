@@ -7,6 +7,7 @@ Button::Button() :
 	m_padding{},
 	m_fixedSize{false}
 {
+	setupDefaultStyle();
 }
 
 Button::Button(const sf::String& string, const sf::Font& font, unsigned int characterSize) :
@@ -15,6 +16,7 @@ Button::Button(const sf::String& string, const sf::Font& font, unsigned int char
 	m_padding{},
 	m_fixedSize{false}
 {
+	setupDefaultStyle();
 }
 
 Button::Button(const sf::Vector2f& size) :
@@ -23,6 +25,7 @@ Button::Button(const sf::Vector2f& size) :
 	m_padding{},
 	m_fixedSize{true}
 {
+	setupDefaultStyle();
 }
 
 sf::FloatRect Button::getLocalBounds() const
@@ -105,4 +108,11 @@ void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	target.draw(m_background, states);
 	target.draw(m_text, states);
+}
+
+void Button::setupDefaultStyle()
+{
+	setBackgroundColor(sf::Color::Transparent);
+	setBorderColor(sf::Color::White);
+	setBorderThickness(1);
 }

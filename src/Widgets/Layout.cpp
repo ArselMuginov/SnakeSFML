@@ -4,10 +4,10 @@
 Layout::Layout(const sf::Vector2f& size) :
 	padding{},
 	spacing{0},
-	stretchContent{false},
 	m_children{},
 	m_background{size}
 {
+	setupDefaultStyle();
 }
 
 void Layout::add(std::unique_ptr<Widget> element)
@@ -60,4 +60,10 @@ void Layout::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(*child, states);
 	}
+}
+
+void Layout::setupDefaultStyle()
+{
+	setBackgroundColor(sf::Color::Transparent);
+	setBorderColor(sf::Color::White);
 }

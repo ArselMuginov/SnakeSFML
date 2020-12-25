@@ -1,7 +1,6 @@
 #pragma once
 #include "Localization/Locale.hpp"
 #include "Resource/FontHolder.hpp"
-#include "Widgets/HBox.hpp"
 #include "Widgets/VBox.hpp"
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -26,6 +25,6 @@ private:
 	const Locale& c_locale;
 
 	VBox m_mainMenuBox;
-	HBox m_gameBox;
+	VBox m_gameBox;
 	sf::Drawable* m_mainDrawable;
 };

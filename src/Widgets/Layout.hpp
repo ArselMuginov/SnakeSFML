@@ -26,10 +26,10 @@ public:
 
 	Padding padding;
 	float spacing;
-	bool stretchContent;
 
 protected:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	void setupDefaultStyle();
 
 	std::vector<std::unique_ptr<Widget>> m_children;
 	sf::RectangleShape m_background;

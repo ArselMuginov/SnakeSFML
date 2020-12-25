@@ -1,19 +1,28 @@
 #include "Gui.hpp"
 #include "Widgets/Button.hpp"
+#include "Widgets/HBox.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 
 Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale& locale) :
 	c_parent{parent},
 	c_fontHolder{rootPath},
 	c_locale{locale},
-	m_mainMenuBox{{200, 400}},
-	m_gameBox{{200, 100}},
+	m_mainMenuBox{},
+	m_gameBox{},
 	m_mainDrawable{}
 {
-	m_mainMenuBox.spacing = 10;
-	m_mainMenuBox.setBackgroundColor(sf::Color::Transparent);
-	m_mainMenuBox.setBorderThickness(1);
-	m_mainMenuBox.setBorderColor(sf::Color::White);
+	sf::Vector2f parentSize{
+		static_cast<float>(c_parent.getSize().x),
+		static_cast<float>(c_parent.getSize().y)
+	};
+
+	m_mainMenuBox.setSize(parentSize);
+	auto mainMenuCenter = VBox::create(sf::Vector2f{
+		parentSize.x * 0.3f,
+		parentSize.y * 0.7f
+	});
+	mainMenuCenter->spacing = 10;
+	mainMenuCenter->setBorderThickness(1);
 
 	auto startButton = Button::create(
 		c_locale("main-menu", "start-game"),
@@ -21,11 +30,9 @@ Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale
 		c_buttonTextCharacterSize
 	);
 	//startButton->setSize(150, 40);
-	startButton->setBackgroundColor(sf::Color::Transparent);
 	startButton->setBorderThickness(1);
-	startButton->setBorderColor(sf::Color::White);
 	startButton->updateLayout();
-	m_mainMenuBox.add(std::move(startButton));
+	mainMenuCenter->add(std::move(startButton));
 
 	auto exitButton = Button::create(
 		c_locale("main-menu", "exit-game"),
@@ -33,18 +40,17 @@ Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale
 		c_buttonTextCharacterSize
 	);
 	//exitButton->setSize(150, 40);
-	exitButton->setBackgroundColor(sf::Color::Transparent);
 	exitButton->setBorderThickness(1);
-	exitButton->setBorderColor(sf::Color::White);
 	exitButton->updateLayout();
-	m_mainMenuBox.add(std::move(exitButton));
+	mainMenuCenter->add(std::move(exitButton));
 
+	mainMenuCenter->updateLayout();
+	m_mainMenuBox.add(std::move(mainMenuCenter));
 	m_mainMenuBox.updateLayout();
 
+	m_gameBox.setSize(parentSize);
 	m_gameBox.spacing = 10;
-	m_gameBox.setBackgroundColor(sf::Color::Transparent);
 	m_gameBox.setBorderThickness(1);
-	m_gameBox.setBorderColor(sf::Color::White);
 	m_gameBox.updateLayout();
 
 	m_mainDrawable = &m_mainMenuBox;

@@ -35,6 +35,7 @@ public:
 
 private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	void setupDefaultStyle();
 
 	sf::RectangleShape m_background;
 	sf::Text m_text;
