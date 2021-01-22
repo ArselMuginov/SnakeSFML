@@ -1,5 +1,5 @@
-﻿cmake_minimum_required (VERSION 3.13)
-project ("SnakeSfml")
+﻿cmake_minimum_required(VERSION 3.13)
+project("SnakeSfml")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -20,6 +20,7 @@ endif()
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 install(DIRECTORY data DESTINATION .)
 
-# Forward DLLs path to script
+# Forward executable & DLL path to script
+install(CODE "set(EXE_PATH \"${CMAKE_INSTALL_PREFIX}/bin/${PROJECT_NAME}${CMAKE_EXECUTABLE_SUFFIX}\")")
 install(CODE "set(DLL_PATH \"${PROJECT_SOURCE_DIR}/extlibs/bin/*\")")
 install(SCRIPT bundle.cmake)
