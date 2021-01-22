@@ -11,7 +11,7 @@ class Gui : public sf::Drawable
 public:
 	Gui(const sf::RenderWindow& parent, const Locale& locale);
 
-	void handleInput(const sf::Event& event);
+	void handleEvent(const sf::Event& event);
 	void update();
 
 private:
@@ -26,5 +26,5 @@ private:
 
 	VBox m_mainMenuBox;
 	VBox m_gameBox;
-	sf::Drawable* m_mainDrawable;
+	VBox* m_mainDrawable;
 };

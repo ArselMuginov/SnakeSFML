@@ -31,7 +31,7 @@ void Game::processEvents()
 			continue;
 		}
 
-		m_gui.handleInput(event);
+		m_gui.handleEvent(event);
 	}
 }
 

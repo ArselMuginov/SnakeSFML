@@ -22,6 +22,8 @@ public:
 	void setBackgroundColor(const sf::Color& color);
 	void setBorderColor(const sf::Color& color);
 
+	virtual void handleEvent(const sf::Event& event);
+
 	const Widget& operator[](std::size_t index) const;
 
 	Padding padding;

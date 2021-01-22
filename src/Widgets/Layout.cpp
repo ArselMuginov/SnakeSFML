@@ -45,6 +45,19 @@ void Layout::setBorderColor(const sf::Color& color)
 	m_background.setOutlineColor(color);
 }
 
+void Layout::handleEvent(const sf::Event& event)
+{
+	for (auto& child : m_children)
+	{
+		child->handleEvent(event);
+	}
+
+	for (auto& function : m_eventHandler[event.type])
+	{
+		std::invoke(function, event);
+	}
+}
+
 const Widget& Layout::operator[](std::size_t index) const
 {
 	return *m_children[index];

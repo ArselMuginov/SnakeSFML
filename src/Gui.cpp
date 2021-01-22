@@ -3,6 +3,7 @@
 #include "Widgets/HBox.hpp"
 #include "Widgets/Label.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
+#include <iostream>
 
 Gui::Gui(const sf::RenderWindow& parent, const Locale& locale) :
 	c_parent{parent},
@@ -45,6 +46,12 @@ Gui::Gui(const sf::RenderWindow& parent, const Locale& locale) :
 	startButton->setSize(150, 40);
 	startButton->setBorderThickness(1);
 	startButton->updateLayout();
+	startButton->connect(
+		sf::Event::MouseButtonPressed,
+		[](sf::Event event) {
+			std::cout << "Start button pressed" << std::endl;
+		}
+	);
 	buttonsGroup->add(std::move(startButton));
 
 	auto exitButton = Button::create(
@@ -72,8 +79,9 @@ Gui::Gui(const sf::RenderWindow& parent, const Locale& locale) :
 	m_mainDrawable = &m_mainMenuBox;
 }
 
-void Gui::handleInput(const sf::Event& event)
+void Gui::handleEvent(const sf::Event& event)
 {
+	m_mainDrawable->handleEvent(event);
 }
 
 void Gui::update()
@@ -83,5 +91,5 @@ void Gui::update()
 void Gui::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	states.texture = nullptr;
-	target.draw(m_mainMenuBox, states);
+	target.draw(*m_mainDrawable, states);
 }
