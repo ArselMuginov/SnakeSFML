@@ -9,7 +9,7 @@
 class Gui : public sf::Drawable
 {
 public:
-	Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale& locale);
+	Gui(const sf::RenderWindow& parent, const Locale& locale);
 
 	void handleInput(const sf::Event& event);
 	void update();

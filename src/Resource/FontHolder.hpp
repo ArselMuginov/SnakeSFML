@@ -13,11 +13,11 @@ enum class FontId
 class FontHolder : public ResourceHolder<FontId, sf::Font>
 {
 public:
-	FontHolder(std::string_view rootPath);
+	FontHolder();
 
 private:
 	static constexpr std::array<std::string_view, 2> c_paths{
-		"data/Fonts/NotoSans/Regular.ttf",
-		"data/Fonts/NotoSansSC/Regular.otf"
+		"NotoSans/Regular.ttf",
+		"NotoSansSC/Regular.otf"
 	};
 };

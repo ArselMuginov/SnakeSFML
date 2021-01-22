@@ -1,7 +1,7 @@
 #pragma once
 #include "GameScene.hpp"
 #include "Gui.hpp"
-#include "Localization/LocaleManager.hpp"
+#include "Localization/Locale.hpp"
 #include <SFML/Graphics/RenderWindow.hpp>
 
 class Game
@@ -17,12 +17,10 @@ private:
 	void render();
 
 	static constexpr GameScene c_firstScene{GameScene::MainMenu};
-	static constexpr std::string_view c_defaultLocaleKey{"en"};
+	static constexpr std::string_view c_startupLocaleKey{"en"};
 	const sf::VideoMode c_videoMode{640, 640};
 	const sf::Color c_backgroundColor{122, 168, 132};
-	const std::string c_rootPath;
 
-	LocaleManager m_localeManager;
 	Locale m_locale;
 	sf::RenderWindow m_window;
 	Gui m_gui;

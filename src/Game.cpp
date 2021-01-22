@@ -1,13 +1,11 @@
 ﻿#include "Game.hpp"
-#include "whereami/wrapper.hpp"
+#include "Utility/Paths.hpp"
 #include <SFML/Window/Event.hpp>
 
 Game::Game() :
-	c_rootPath{wai::getExecutablePath() + "\\..\\"},
-	m_localeManager{c_rootPath},
-	m_locale{m_localeManager.getLocalePath(c_defaultLocaleKey)},
+	m_locale{c_startupLocaleKey},
 	m_window{c_videoMode, m_locale("", "window-title"), sf::Style::Titlebar | sf::Style::Close},
-	m_gui{m_window, c_rootPath, m_locale},
+	m_gui{m_window, m_locale},
 	m_activeScene{c_firstScene}
 {
 }

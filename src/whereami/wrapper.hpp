@@ -1,7 +1,7 @@
 #pragma once
-#include <string>
+#include <filesystem>
 
 namespace wai
 {
-	std::string getExecutablePath();
+	std::filesystem::path getExecutablePath();
 }

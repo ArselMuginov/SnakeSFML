@@ -4,9 +4,9 @@
 #include "Widgets/Label.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 
-Gui::Gui(const sf::RenderWindow& parent, std::string_view rootPath, const Locale& locale) :
+Gui::Gui(const sf::RenderWindow& parent, const Locale& locale) :
 	c_parent{parent},
-	c_fontHolder{rootPath},
+	c_fontHolder{},
 	c_locale{locale},
 	m_mainMenuBox{},
 	m_gameBox{},

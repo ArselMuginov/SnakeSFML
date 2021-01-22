@@ -1,2 +1,2 @@
-set(SOURCES Locale.cpp LocaleManager.cpp)
+set(SOURCES Locale.cpp)
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})

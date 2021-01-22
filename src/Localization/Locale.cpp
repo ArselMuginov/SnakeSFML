@@ -1,18 +1,36 @@
 #include "Locale.hpp"
+#include "Utility/Paths.hpp"
 #include <fstream>
 
-Locale::Locale() : m_data{}
+std::unordered_map<std::string, sf::String> Locale::m_localeNames;
+std::unordered_map<std::string, std::filesystem::path> Locale::m_localePaths;
+
+Locale::Locale(std::string_view startupLocaleKey) : m_data{}
 {
+	for (const auto& entry : std::filesystem::directory_iterator(Paths::locales))
+	{
+		std::string localeKey = entry.path().filename().string();
+
+		std::ifstream nameFile(entry.path() / c_nameFileName);
+		std::string localeName;
+		nameFile >> localeName;
+
+		m_localeNames.insert({localeKey, localeName});
+		m_localePaths.insert({localeKey, entry.path() / c_dataFileName});
+	}
+
+	load(startupLocaleKey);
 }
 
-Locale::Locale(const std::filesystem::path& path) : m_data{}
+void Locale::load(std::string_view localeKey)
 {
-	load(path);
-}
+	const auto& iter = m_localePaths.find(std::string{localeKey});
+	if (iter == m_localePaths.end())
+	{
+		throw std::invalid_argument{"No locale found with specified key"};
+	}
 
-void Locale::load(const std::filesystem::path& path)
-{
-	std::ifstream localeFile(path);
+	std::ifstream localeFile(iter->second);
 	std::string line;
 	std::string sectionName = "";
 
@@ -35,7 +53,7 @@ void Locale::load(const std::filesystem::path& path)
 		auto splitPos = line.find('=');
 		std::string key = line.substr(0, splitPos);
 		sf::String value = sf::String::fromUtf8(line.begin() + splitPos + 1, line.end());
-		m_data.insert({ std::make_pair(sectionName, key), value });
+		m_data.insert({std::make_pair(sectionName, key), value});
 	}
 }
 
