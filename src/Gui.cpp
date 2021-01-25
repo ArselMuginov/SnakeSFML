@@ -5,6 +5,14 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <iostream>
 
+namespace
+{
+	sf::Vector2f mouseToVector(sf::Event event)
+	{
+		return sf::Vector2f(event.mouseButton.x, event.mouseButton.y);
+	}
+}
+
 Gui::Gui(const sf::RenderWindow& parent, const Locale& locale) :
 	c_parent{parent},
 	c_fontHolder{},
@@ -48,8 +56,12 @@ Gui::Gui(const sf::RenderWindow& parent, const Locale& locale) :
 	startButton->updateLayout();
 	startButton->connect(
 		sf::Event::MouseButtonPressed,
-		[](sf::Event event) {
-			std::cout << "Start button pressed" << std::endl;
+		[](const sf::Event& event, const Widget* self, const sf::Transform& globalTransform) {
+			const auto transformedBounds = globalTransform.transformRect(self->getLocalBounds());
+			if (transformedBounds.contains(mouseToVector(event)))
+			{
+				std::cout << "Start button pressed" << std::endl;
+			}
 		}
 	);
 	buttonsGroup->add(std::move(startButton));

@@ -22,7 +22,7 @@ public:
 	void setBackgroundColor(const sf::Color& color);
 	void setBorderColor(const sf::Color& color);
 
-	virtual void handleEvent(const sf::Event& event);
+	virtual void handleEvent(const sf::Event& event, const sf::Transform& globalTransform = {});
 
 	const Widget& operator[](std::size_t index) const;
 

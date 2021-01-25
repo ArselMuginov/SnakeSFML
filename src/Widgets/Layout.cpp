@@ -45,16 +45,18 @@ void Layout::setBorderColor(const sf::Color& color)
 	m_background.setOutlineColor(color);
 }
 
-void Layout::handleEvent(const sf::Event& event)
+void Layout::handleEvent(const sf::Event& event, const sf::Transform& globalTransform)
 {
+	auto newTransform = globalTransform * getTransform();
+
 	for (auto& child : m_children)
 	{
-		child->handleEvent(event);
+		child->handleEvent(event, newTransform);
 	}
 
 	for (auto& function : m_eventHandler[event.type])
 	{
-		std::invoke(function, event);
+		std::invoke(function, event, this, newTransform);
 	}
 }
 

@@ -9,13 +9,15 @@
 class Widget : public sf::Drawable, public sf::Transformable
 {
 public:
+	typedef std::function<void(const sf::Event&, const Widget*, const sf::Transform&)> HandlerFunction;
+
 	Widget();
 
 	virtual sf::FloatRect getLocalBounds() const = 0;
 	sf::FloatRect getGlobalBounds() const;
-	void connect(sf::Event::EventType eventType, std::function<void(sf::Event)> function);
-	virtual void handleEvent(const sf::Event& event);
+	void connect(sf::Event::EventType eventType, HandlerFunction function);
+	virtual void handleEvent(const sf::Event& event, const sf::Transform& globalTransform = {});
 
 protected:
-	std::unordered_map<sf::Event::EventType, std::vector<std::function<void(sf::Event)>>> m_eventHandler;
+	std::unordered_map<sf::Event::EventType, std::vector<HandlerFunction>> m_eventHandler;
 };
