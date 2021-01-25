@@ -22,7 +22,7 @@ public:
 	void setBackgroundColor(const sf::Color& color);
 	void setBorderColor(const sf::Color& color);
 
-	virtual void handleEvent(const sf::Event& event, const sf::Transform& globalTransform = {});
+	virtual void handleEvent(const sf::Event& event, const sf::Transform& globalTransform = {}) const;
 
 	const Widget& operator[](std::size_t index) const;
 
@@ -31,7 +31,6 @@ public:
 
 protected:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	void setupDefaultStyle();
 
 	std::vector<std::unique_ptr<Widget>> m_children;
 	sf::RectangleShape m_background;

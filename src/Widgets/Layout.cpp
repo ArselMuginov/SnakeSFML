@@ -7,7 +7,8 @@ Layout::Layout(const sf::Vector2f& size) :
 	m_children{},
 	m_background{size}
 {
-	setupDefaultStyle();
+	setBackgroundColor(sf::Color::Transparent);
+	setBorderColor(sf::Color::White);
 }
 
 void Layout::add(std::unique_ptr<Widget> element)
@@ -45,18 +46,13 @@ void Layout::setBorderColor(const sf::Color& color)
 	m_background.setOutlineColor(color);
 }
 
-void Layout::handleEvent(const sf::Event& event, const sf::Transform& globalTransform)
+void Layout::handleEvent(const sf::Event& event, const sf::Transform& globalTransform) const
 {
-	auto newTransform = globalTransform * getTransform();
+	const auto newTransform = globalTransform * getTransform();
 
-	for (auto& child : m_children)
+	for (const auto& child : m_children)
 	{
 		child->handleEvent(event, newTransform);
-	}
-
-	for (auto& function : m_eventHandler[event.type])
-	{
-		std::invoke(function, event, this, newTransform);
 	}
 }
 
@@ -75,10 +71,4 @@ void Layout::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(*child, states);
 	}
-}
-
-void Layout::setupDefaultStyle()
-{
-	setBackgroundColor(sf::Color::Transparent);
-	setBorderColor(sf::Color::White);
 }

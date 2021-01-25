@@ -55,14 +55,8 @@ Gui::Gui(const sf::RenderWindow& parent, const Locale& locale) :
 	startButton->setBorderThickness(1);
 	startButton->updateLayout();
 	startButton->connect(
-		sf::Event::MouseButtonPressed,
-		[](const sf::Event& event, const Widget* self, const sf::Transform& globalTransform) {
-			const auto transformedBounds = globalTransform.transformRect(self->getLocalBounds());
-			if (transformedBounds.contains(mouseToVector(event)))
-			{
-				std::cout << "Start button pressed" << std::endl;
-			}
-		}
+		Button::Signal::Pressed,
+		[]() { std::cout << "Start button pressed" << std::endl; }
 	);
 	buttonsGroup->add(std::move(startButton));
 

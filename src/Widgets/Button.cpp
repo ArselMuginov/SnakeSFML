@@ -2,31 +2,16 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <cmath>
 
-Button::Button() :
-	m_background{},
-	m_text{},
-	m_padding{},
-	m_fixedSize{false}
-{
-	setupDefaultStyle();
-}
-
 Button::Button(const sf::String& string, const sf::Font& font, unsigned int characterSize) :
 	m_background{},
 	m_text{string, font, characterSize},
 	m_padding{},
-	m_fixedSize{false}
+	m_fixedSize{false},
+	m_eventHandler{{Signal::Pressed, {}}}
 {
-	setupDefaultStyle();
-}
-
-Button::Button(const sf::Vector2f& size) :
-	m_background{size},
-	m_text{},
-	m_padding{},
-	m_fixedSize{true}
-{
-	setupDefaultStyle();
+	setBackgroundColor(sf::Color::Transparent);
+	setBorderColor(sf::Color::White);
+	setBorderThickness(1);
 }
 
 sf::FloatRect Button::getLocalBounds() const
@@ -102,6 +87,29 @@ void Button::updateLayout()
 	);
 }
 
+void Button::connect(Signal signal, std::function<void()> function)
+{
+	m_eventHandler.at(signal).push_back(function);
+}
+
+void Button::handleEvent(const sf::Event& event, const sf::Transform& globalTransform) const
+{
+	if (event.type == sf::Event::MouseButtonPressed)
+	{
+		const auto eventData = event.mouseButton;
+		const auto mousePos = sf::Vector2f(eventData.x, eventData.y);
+		const auto transformedBounds = globalTransform.transformRect(getGlobalBounds());
+		
+		if (transformedBounds.contains(mousePos) && eventData.button == sf::Mouse::Left)
+		{
+			for (auto& function : m_eventHandler.at(Signal::Pressed))
+			{
+				std::invoke(function);
+			}
+		}
+	}
+}
+
 void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
@@ -109,11 +117,4 @@ void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	target.draw(m_background, states);
 	target.draw(m_text, states);
-}
-
-void Button::setupDefaultStyle()
-{
-	setBackgroundColor(sf::Color::Transparent);
-	setBorderColor(sf::Color::White);
-	setBorderThickness(1);
 }
