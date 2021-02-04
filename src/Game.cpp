@@ -1,12 +1,11 @@
 ﻿#include "Game.hpp"
-#include "Utility/Paths.hpp"
 #include <SFML/Window/Event.hpp>
 
 Game::Game() :
 	m_locale{c_startupLocaleKey},
 	m_window{c_videoMode, m_locale("", "window-title"), sf::Style::Titlebar | sf::Style::Close},
-	m_gui{m_window, m_locale},
-	m_activeScene{c_firstScene}
+	m_activeScene{c_firstScene},
+	m_gui{m_window, m_locale, m_activeScene}
 {
 }
 
@@ -43,6 +42,17 @@ void Game::update()
 void Game::render()
 {
 	m_window.clear();
+
+	switch (m_activeScene)
+	{
+	case GameScene::MainMenu:
+		break;
+	case GameScene::Game:
+		break;
+	default:
+		throw std::domain_error{"Bad enum value"};
+	}
+
 	m_window.draw(m_gui);
 	m_window.display();
 }

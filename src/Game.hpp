@@ -23,6 +23,6 @@ private:
 
 	Locale m_locale;
 	sf::RenderWindow m_window;
-	Gui m_gui;
 	GameScene m_activeScene;
+	Gui m_gui;
 };

@@ -5,25 +5,18 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <iostream>
 
-namespace
-{
-	sf::Vector2f mouseToVector(sf::Event event)
-	{
-		return sf::Vector2f(event.mouseButton.x, event.mouseButton.y);
-	}
-}
-
-Gui::Gui(const sf::RenderWindow& parent, const Locale& locale) :
-	c_parent{parent},
+Gui::Gui(sf::RenderWindow& parent, const Locale& locale, GameScene& activeScene) :
 	c_fontHolder{},
 	c_locale{locale},
 	m_mainMenuBox{},
 	m_gameBox{},
-	m_mainDrawable{}
+	m_mainDrawable{},
+	m_parent{parent},
+	m_activeScene{activeScene}
 {
 	sf::Vector2f parentSize{
-		static_cast<float>(c_parent.getSize().x),
-		static_cast<float>(c_parent.getSize().y)
+		static_cast<float>(m_parent.getSize().x),
+		static_cast<float>(m_parent.getSize().y)
 	};
 
 	m_mainMenuBox.setSize(parentSize);
@@ -58,7 +51,10 @@ Gui::Gui(const sf::RenderWindow& parent, const Locale& locale) :
 	startButton->updateLayout();
 	startButton->connect(
 		Button::Signal::Pressed,
-		[]() { std::cout << "Start button pressed" << std::endl; }
+		[this]() {
+			m_activeScene = GameScene::Game;
+			m_mainDrawable = &m_gameBox;
+		}
 	);
 	buttonsGroup->add(std::move(startButton));
 
@@ -70,6 +66,10 @@ Gui::Gui(const sf::RenderWindow& parent, const Locale& locale) :
 	exitButton->setSize(150, 40);
 	exitButton->setBorderThickness(1);
 	exitButton->updateLayout();
+	exitButton->connect(
+		Button::Signal::Pressed,
+		[this]() { m_parent.close(); }
+	);
 	buttonsGroup->add(std::move(exitButton));
 
 	buttonsGroup->updateLayout();
