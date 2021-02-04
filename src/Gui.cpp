@@ -33,6 +33,8 @@ Gui::Gui(const sf::RenderWindow& parent, const Locale& locale) :
 	});
 	mainMenuBorder->setBorderThickness(1);
 
+	c_fontHolder.load(FontId::Default);
+
 	auto title = Label::create(
 		c_locale("main-menu", "game-title"),
 		c_fontHolder[FontId::Default],

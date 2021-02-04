@@ -14,6 +14,7 @@ class FontHolder : public ResourceHolder<FontId, sf::Font>
 {
 public:
 	FontHolder();
+	void load(FontId id) const;
 
 private:
 	static constexpr std::array<std::string_view, 2> c_paths{
